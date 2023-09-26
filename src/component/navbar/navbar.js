@@ -2,11 +2,17 @@ import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faMagnifyingGlass,
+  faShoppingCart,
+  faSliders,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   return (
     <div className="navbar">
-      <div className="row align-items-center">
+      <div className="row align-items-center" style={{ width: "100%" }}>
         <div id="header" className="row align-items-center">
           <div className="container">
             <div className="row justify-content-around align-items-center">
@@ -28,7 +34,7 @@ function Navbar() {
                     <FontAwesomeIcon
                       id="ic-search"
                       className="ic"
-                      icon="magnifying-glass"
+                      icon={faMagnifyingGlass}
                       size="lg"
                     />
                   </div>
@@ -36,7 +42,7 @@ function Navbar() {
                     <FontAwesomeIcon
                       id="ic-filters"
                       className="ic"
-                      icon="sliders"
+                      icon={faSliders}
                       size="lg"
                     />
                   </div>
@@ -48,7 +54,7 @@ function Navbar() {
                     <FontAwesomeIcon
                       id="ic-shopping-cart"
                       className="ic"
-                      icon="shopping-cart"
+                      icon={faShoppingCart}
                       size="lg"
                       style={{ cursor: "pointer" }}
                     />
@@ -83,7 +89,7 @@ function Navbar() {
                       aria-controls="collapseExample"
                     >
                       <FontAwesomeIcon
-                        icon="bars"
+                        icon={faBars}
                         size="lg"
                         style={{ color: "white", cursor: "pointer" }}
                       />
