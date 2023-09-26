@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "../component/navbar/navbar";
 import Home from "../page/home/home";
 import NotFound from "../page/notFound/notFound";
 import Login from "../page/login/login";
@@ -11,7 +10,7 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          <Route index element={<Navbar />} />
+          <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
