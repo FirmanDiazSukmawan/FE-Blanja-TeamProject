@@ -1,12 +1,11 @@
-import React from 'react'
-import "../../asset/style.css"
+import React from "react";
 
 function Home() {
   return (
     <>
-    <h1>HOMEPAGE</h1>
+      <h1>HOMEPAGE</h1>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

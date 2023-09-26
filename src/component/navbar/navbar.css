@@ -1,0 +1,145 @@
+/* navbar */
+.navbar {
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.navbar .ic {
+  color: #a5a5a5;
+}
+.navbar #header {
+  width: 100%;
+  height: 80px;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+.navbar .filters {
+  width: 40px;
+  height: 40px;
+  margin-left: 0.5rem;
+  background-color: white;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.navbar .filters:hover {
+  background-color: #e4e4e4;
+}
+.navbar .search {
+  position: relative;
+}
+.navbar .search input {
+  text-indent: 0.5rem;
+  margin-right: 0.5rem;
+  border-width: 2px;
+  border-color: #e4e4e4;
+  border-radius: 50px;
+}
+.navbar .search input:focus {
+  border-color: #db3022 !important;
+  box-shadow: 0px 0px 5px 1px #db3022;
+}
+.navbar .search #ic-search {
+  position: absolute;
+  top: calc(25%);
+  right: 2rem;
+}
+.navbar .action {
+  margin-left: 100px;
+}
+.navbar .action .img-profile {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  object-fit: cover;
+  object-position: center;
+}
+.navbar .action .btn-primary {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: #db3022;
+  border-color: #db3022;
+}
+.navbar .action .btn-primary:hover {
+  background-color: #cc2b1d;
+  border-color: #cc2b1d;
+}
+.navbar .action .btn-light {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+}
+.navbar .action .btn-light:hover {
+  background-color: #e4e4e4;
+}
+.navbar .action .menu {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* media query */
+@media only screen and (max-width: 575px) {
+  .navbar #header {
+    height: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #db3022;
+  }
+  .navbar .main-nav {
+    margin-right: 0px;
+  }
+  .navbar .logo {
+    display: none;
+    visibility: hidden;
+  }
+  .navbar .search input {
+    height: 10%;
+    margin-right: 0rem;
+    border-radius: 7px;
+  }
+  .navbar .search #ic-search {
+    top: calc(30%);
+    right: 1.5rem;
+  }
+  .navbar .filters {
+    width: 30px;
+    height: 30px;
+    margin-left: 0rem;
+    border-style: hidden;
+    background-color: transparent;
+  }
+  .navbar .filters #ic-filters {
+    color: white;
+  }
+  .navbar .filters:hover {
+    background-color: transparent;
+  }
+  .navbar .action {
+    margin-left: 0px;
+  }
+  .navbar .action .btn-login,
+  .navbar .action .btn-regis,
+  .navbar .action #img-profile,
+  .navbar .action #ic-bell,
+  .navbar .action #ic-envelope {
+    display: none;
+    visibility: hidden;
+  }
+  .navbar .action #ic-shopping-cart {
+    color: white;
+  }
+  .navbar .action .menu {
+    display: block !important;
+    visibility: visible;
+  }
+  .navbar .card {
+    width: 35vw;
+  }
+}
