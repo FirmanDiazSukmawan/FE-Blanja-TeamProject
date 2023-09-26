@@ -4,8 +4,7 @@ import Home from "../page/home/home";
 import NotFound from "../page/notFound/notFound";
 import Login from "../page/login/login";
 import Register from "../page/register/register";
-import DetailProduct from "../page/detailProduct/DetailProduct"
-import NavbarLogin from "../component/navbarLogin/navbarLogin";
+import DetailProduct from "../page/detailProduct/DetailProduct";
 
 function Router() {
   return (

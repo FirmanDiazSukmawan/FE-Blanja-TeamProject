@@ -1,11 +1,15 @@
 import React from "react";
 import Navbar from "../../component/navbar/navbar";
+import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 
 function Home() {
+  const login = localStorage.getItem("token");
   return (
     <>
-    <Navbar></Navbar>
+    {!login ? <Navbar /> : <NavbarLogin />}
+    <div className="d-flex">
       <h1>HOMEPAGE</h1>
+      </div>
     </>
   );
 }

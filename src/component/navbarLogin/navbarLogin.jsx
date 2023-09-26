@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navbarLogin.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -11,9 +11,46 @@ import {
   faBell,
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
-import profile from "../../asset/img/faqih.png"
+
 
 function NavbarLogin() {
+
+    const navigate = useNavigate()
+    // const [img,setimg] = useState("")
+    const image = localStorage.getItem("image")
+
+//    const userId = localStorage.getItem("userId")
+
+//    useEffect(() => {
+//     if(role === "seller") {
+//     axios
+//       .get(`${url}/seller/${userId}`)
+//       .then((res) => {
+//         setimg(res.data.data.image)
+//         console.log(res.data.data.image);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });}
+
+//       else {
+//         axios
+//       .get(`${url}/customer/${userId}`)
+//       .then((res) => {
+//         setimg(res.data.data.image)
+//         console.log(res.data.data.image);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//       }
+//   }, [userId]);
+  
+
+    const handleLogout = () => {
+    localStorage.clear();
+    navigate("/home");
+  };
   return (
     <div className="navbar">
       <div className="row align-items-center w-100">
@@ -82,7 +119,7 @@ function NavbarLogin() {
                     />
                   </div>
                   <div className="col-auto">
-                    <img src={profile} className="iconProfile" alt="" />
+                    <img src={image} className="iconProfile" alt="" />
                   </div>
 
                   <div className="col-auto btn-login">
@@ -90,6 +127,7 @@ function NavbarLogin() {
                       <button
                         type="button"
                         className="btn btn-primary border-2 rounded-pill"
+                        onClick={handleLogout}
                       >
                         Log Out
                       </button>
@@ -114,31 +152,6 @@ function NavbarLogin() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div
-          className="row collapse justify-content-end text-end"
-          id="collapseExample"
-        >
-          <div className="card">
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">
-                <Link
-                  className="text-black text-decoration-none mb-3 text-center"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="list-group-item">
-                <Link
-                  className="text-black text-decoration-none mb-3 text-center"
-                  to="/register"
-                >
-                  Register
-                </Link>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
