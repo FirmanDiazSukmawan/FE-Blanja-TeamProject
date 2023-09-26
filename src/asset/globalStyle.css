@@ -4,7 +4,7 @@ form .form-control:focus {
   box-shadow: 0 0 0 0.2rem rgb(219, 48, 34);
 }
 
-.btn-group .btn-check:checked + .btn {
+/* .btn-group .btn-check:checked + .btn {
   color: white;
   background-color: #db3022;
   border-color: #db3022;
@@ -16,4 +16,4 @@ a.text-danger {
 
 button.btn {
   background-color: #db3022;
-}
+} */

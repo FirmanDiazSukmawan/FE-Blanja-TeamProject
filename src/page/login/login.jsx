@@ -85,7 +85,7 @@ function Login() {
               <b>Please login with your account</b>
             </p>
             <Tabs
-            justify variant="pills"
+            variant="pills"
             defaultActiveKey="Customer"
             transition={false}
             id="noanim-tab-example"
