@@ -1,0 +1,13 @@
+.ProductList {
+  #category {
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+
+  @media only screen and (max-width: 575px) {
+    #category {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+  }
+}
