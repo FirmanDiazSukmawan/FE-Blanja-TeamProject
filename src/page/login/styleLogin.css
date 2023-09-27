@@ -1,7 +1,20 @@
-.nav-pills .nav-link:hover {
-    color: #fff;
+.nav.nav-pills .nav-link {
+  color: #db3022;
+}
+.nav.nav-pills .nav-link.active {
+  background-color: #db3022;
+  color: #fff;
 }
 
-.nav-pills.nav-link {
-    background-color: #cc0000;
+form .form-control:focus {
+  border-color: #db3022;
+  box-shadow: 0 0 0 0.2rem rgb(219, 48, 34);
+}
+
+a.text-danger {
+  color: #db3022 !important;
+}
+
+button.btn {
+  background-color: #db3022;
 }
