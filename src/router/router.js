@@ -5,8 +5,8 @@ import NotFound from "../page/notFound/notFound";
 import Login from "../page/login/login";
 import Register from "../page/register/register";
 import DetailProduct from "../page/detailProduct/DetailProduct"
-import SidebarProfile from "../component/SidebarProfile";
-
+import Dashboard from "../component/Dashboard/Dashboard";
+import SellingProduct from "../component/Dashboard/SellingProduct";
 
 function Router() {
   return (
@@ -18,7 +18,8 @@ function Router() {
           <Route path="register" element={<Register />} />
           <Route path="detailProduct" element={<DetailProduct />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="SidebarProfile" element={<SidebarProfile />} />
+          <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="Se" element={<SellingProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>

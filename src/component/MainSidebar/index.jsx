@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, {  } from 'react';
 import '../../Assets/css/style.css';
 import '../../App.css';
 
-import ModalProduct from '../ModalProduct';
-import ModalUpdate from '../ModalUpdate';
+import ModalUpdate from '../ModalUpdate/index';
 
 
 const MainSidebar = () => {
@@ -62,11 +61,11 @@ const MainSidebar = () => {
                             <td className="text-center">{item.stock}</td>
 
                             <td className="text-center">
-                              <button type="button" className="btn btn-success me-1" data-bs-toggle="modal" data-bs-target={`#update${item.id_product}`}>
+                              <button type="button" className="btn btn-success me-1" data-bs-toggle="modal" data-bs-target>
                                 <i className="bi bi-pencil-square"></i>
                               </button>
 
-                              <button type="button" className="btn btn-danger" onClick={() => handleDelete(item.id_product)}>
+                              <button type="button" className="btn btn-danger">
                                 <i className="bi bi-trash3-fill"></i>
                               </button>
                             </td>
