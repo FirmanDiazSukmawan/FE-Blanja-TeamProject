@@ -1,6 +1,6 @@
 import React from "react";
 import bajukoko from "../../asset/img/bajukoko.png";
-import {AiFillAmazonCircle, AiFillStar, AiOutlineStar} from "react-icons/ai"
+import {AiFillStar, AiOutlineStar} from "react-icons/ai"
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 
 
