@@ -22,6 +22,8 @@ function Login() {
       });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.data.customer_id);
+      localStorage.setItem("image", res.data.data.image);
+      console.log(res);
       Swal.fire({
         text: "Gratz Login succes brother",
         icon: "success",
@@ -47,6 +49,7 @@ function Login() {
       });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.data.seller_id);
+      localStorage.setItem("image", res.data.data.image);
       Swal.fire({
         text: "Gratz Login succes brother",
         icon: "success",
@@ -79,7 +82,6 @@ function Login() {
               <b>Please login with your account</b>
             </p>
             <Tabs
-              justify
               variant="pills"
               defaultActiveKey="Customer"
               transition={false}

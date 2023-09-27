@@ -1,7 +1,7 @@
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-import React from "react";
-import "../navbar/navbar.css";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import "./navbarLogin.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -12,10 +12,45 @@ import {
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Navbar() {
+function NavbarLogin() {
+  const navigate = useNavigate();
+  // const [img,setimg] = useState("")
+  const image = localStorage.getItem("image");
+
+  //    const userId = localStorage.getItem("userId")
+
+  //    useEffect(() => {
+  //     if(role === "seller") {
+  //     axios
+  //       .get(`${url}/seller/${userId}`)
+  //       .then((res) => {
+  //         setimg(res.data.data.image)
+  //         console.log(res.data.data.image);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });}
+
+  //       else {
+  //         axios
+  //       .get(`${url}/customer/${userId}`)
+  //       .then((res) => {
+  //         setimg(res.data.data.image)
+  //         console.log(res.data.data.image);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //       }
+  //   }, [userId]);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/home");
+  };
   return (
     <div className="navbar">
-      <div className="row align-items-center" style={{ width: "100%" }}>
+      <div className="row align-items-center w-100">
         <div id="header" className="row align-items-center">
           <div className="container">
             <div className="row justify-content-around align-items-center">
@@ -53,7 +88,7 @@ function Navbar() {
               </div>
               <div className="action col-auto">
                 <div className="row align-items-center d-flex">
-                  <div className="col-auto me-3">
+                  <div className="col-auto">
                     <FontAwesomeIcon
                       id="ic-shopping-cart"
                       className="ic"
@@ -62,54 +97,38 @@ function Navbar() {
                       style={{ cursor: "pointer" }}
                     />
                   </div>
-                  <div id="ic-bell" className="col-auto me-3">
+                  <div className="col-auto">
                     <FontAwesomeIcon
+                      id="ic-bell"
                       className="ic"
                       icon={faBell}
                       size="lg"
                       style={{ cursor: "pointer" }}
                     />
                   </div>
-                  <div id="ic-envelope" className="col-auto me-3">
+                  <div className="col-auto me-3">
                     <FontAwesomeIcon
+                      id="ic-envelope"
                       className="ic"
                       icon={faEnvelope}
                       size="lg"
                       style={{ cursor: "pointer" }}
                     />
                   </div>
-                  <div id="img-profile" className="col-auto dropdown">
-                    <img
-                      className="img-profile rounded-circle"
-                      src={require("../../asset/img/blanja.png")}
-                      alt="Profile"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    />
-                    <ul className="dropdown-menu dropdown-menu-end justify-content-end text-end">
-                      <li>
-                        <Link to="/profile">
-                          <button className="dropdown-item" type="button">
-                            Profile
-                          </button>
-                        </Link>
-                      </li>
-                      <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      <li>
-                        <button
-                          className="dropdown-item"
-                          type="button"
-                          onClick={() => {
-                            localStorage.clear();
-                            window.location.href = "/login";
-                          }}
-                        >
-                          Logout
-                        </button>
-                      </li>
-                    </ul>
+                  <div className="col-auto">
+                    <img src={image} className="iconProfile" alt="" />
+                  </div>
+
+                  <div className="col-auto btn-login">
+                    <Link to="/login">
+                      <button
+                        type="button"
+                        className="btn btn-primary border-2 rounded-pill"
+                        onClick={handleLogout}
+                      >
+                        Log Out
+                      </button>
+                    </Link>
                   </div>
                   <div className="col-auto d-flex justify-content-between align-items-center menu">
                     <button
@@ -132,34 +151,9 @@ function Navbar() {
             </div>
           </div>
         </div>
-        <div
-          className="row collapse justify-content-end text-end"
-          id="collapseExample"
-        >
-          <div className="card">
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">
-                <Link
-                  className="text-black text-decoration-none mb-3 text-center"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="list-group-item">
-                <Link
-                  className="text-black text-decoration-none mb-3 text-center"
-                  to="/register"
-                >
-                  Register
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );
 }
 
-export default Navbar;
+export default NavbarLogin;
