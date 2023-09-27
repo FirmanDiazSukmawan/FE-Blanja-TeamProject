@@ -1,7 +1,4 @@
 import React from "react";
-
-// import Navbar from "../components/Navbar";
-// import ProductCard from "../components/ProductCard";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { url } from "../../redux/baseUrl/url";
