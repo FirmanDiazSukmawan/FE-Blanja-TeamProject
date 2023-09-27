@@ -1,0 +1,28 @@
+.Home {
+  overflow-x: hidden;
+  #carousel {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+  }
+
+  #category-list,
+  #new-product,
+  #popular-product {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+
+  @media only screen and (max-width: 575px) {
+    #carousel {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    #category-list,
+    #new-product,
+    #popular-product {
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+  }
+}

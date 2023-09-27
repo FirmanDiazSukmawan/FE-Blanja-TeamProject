@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable jsx-a11y/heading-has-content */
+import React, { useEffect, useState } from "react";
+
 import Navbar from "../../component/navbar/navbar";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 
