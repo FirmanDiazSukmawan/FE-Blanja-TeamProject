@@ -1,25 +1,34 @@
-import React from 'react';
+import React from "react";
 
+<<<<<<< HEAD
 import IconProduct from '../../asset/img/package 1.png';
 import IconCart from '../../asset/img/shopping-cart (3) 1.png';
 import '../../asset/css/style.css';
 import HeaderProfile from '../HeaderProfile';
 import ButtonSidebar from '../ButtonSidebar';
 import { useNavigate } from 'react-router-dom';
+=======
+import IconProduct from "../../asset/img/package 1.png";
+import IconCart from "../../asset/img/shopping-cart (3) 1.png";
+import "../../asset/css/style.css";
+import HeaderProfile from "../HeaderProfile";
+import ButtonSidebar from "../ButtonSidebar";
+import { useNavigate } from "react-router-dom";
+>>>>>>> e66bb2369ad571701090437928ba21c23058ca4f
 
 const SidebarProfile = () => {
-  const isSeller = localStorage.getItem('role');
+  const isSeller = localStorage.getItem("role");
   const navigate = useNavigate();
 
   const handleProduct = () => {
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   const handleSellingProduct = () => {
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
-  if (isSeller === 'seller') {
+  if (isSeller === "seller") {
     return (
       <>
         <HeaderProfile />
@@ -29,9 +38,20 @@ const SidebarProfile = () => {
 
           <div className="list-item">
             <p>
-              <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseProduct" role="button" aria-expanded="false" aria-controls="collapseProduct">
-                <img className="icon-profile-product" src={IconProduct} alt="" />
-                <span className="description active ms-3">Product</span>{' '}
+              <a
+                className="btn btn-primary"
+                data-bs-toggle="collapse"
+                href="#collapseProduct"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseProduct"
+              >
+                <img
+                  className="icon-profile-product"
+                  src={IconProduct}
+                  alt=""
+                />
+                <span className="description active ms-3">Product</span>{" "}
               </a>
             </p>
 
@@ -50,9 +70,16 @@ const SidebarProfile = () => {
 
           <div className="list-item">
             <p>
-              <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseCart" role="button" aria-expanded="false" aria-controls="collapseCart">
+              <a
+                className="btn btn-primary"
+                data-bs-toggle="collapse"
+                href="#collapseCart"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseCart"
+              >
                 <img className="icon-profile-cart" src={IconCart} alt="" />
-                <span className="description active ms-3">Order</span>{' '}
+                <span className="description active ms-3">Order</span>{" "}
               </a>
             </p>
 
@@ -81,9 +108,22 @@ const SidebarProfile = () => {
 
           <div className="list-item">
             <p>
-              <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseProduct" role="button" aria-expanded="false" aria-controls="collapseProduct">
-                <img className="icon-profile-product" src={IconProduct} alt="" />
-                <span className="description active ms-3">Shipping Address</span>{' '}
+              <a
+                className="btn btn-primary"
+                data-bs-toggle="collapse"
+                href="#collapseProduct"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseProduct"
+              >
+                <img
+                  className="icon-profile-product"
+                  src={IconProduct}
+                  alt=""
+                />
+                <span className="description active ms-3">
+                  Shipping Address
+                </span>{" "}
               </a>
             </p>
 
@@ -102,9 +142,16 @@ const SidebarProfile = () => {
 
           <div className="list-item">
             <p>
-              <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseCart" role="button" aria-expanded="false" aria-controls="collapseCart">
+              <a
+                className="btn btn-primary"
+                data-bs-toggle="collapse"
+                href="#collapseCart"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseCart"
+              >
                 <img className="icon-profile-cart" src={IconCart} alt="" />
-                <span className="description active ms-3">My Order</span>{' '}
+                <span className="description active ms-3">My Order</span>{" "}
               </a>
             </p>
 

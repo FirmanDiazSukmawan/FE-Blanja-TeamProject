@@ -1,0 +1,56 @@
+.Carousel {
+  .style-item {
+    margin-left: 1vw;
+    margin-right: 1vw;
+  }
+
+  .item {
+    cursor: pointer;
+
+    .img-item {
+      border-radius: 15px;
+      width: 100%;
+      height: 25vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .title-item {
+        font-size: 2.5rem;
+        text-align: center;
+        text-shadow: 2px 2px 4px #000000;
+      }
+    }
+  }
+
+  /* Styles for screens with a maximum width of 800px (tablet) */
+  @media only screen and (max-width: 800px) {
+    .item {
+      .img-item {
+        border-radius: 5px;
+        width: 100%;
+        height: 200px;
+
+        .title-item {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .item {
+      .img-item {
+        border-radius: 5px;
+        width: 100%;
+        height: 200px;
+
+        .title-item {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

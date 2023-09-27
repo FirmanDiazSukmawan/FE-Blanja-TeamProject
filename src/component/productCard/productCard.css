@@ -1,0 +1,29 @@
+.ProductCard {
+  .card {
+    width: 15rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+
+    .card-img-top {
+      height: 10rem;
+      object-fit: cover;
+    }
+
+    #ic-star {
+      color: #ffba49;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .card {
+      width: 10rem;
+
+      .card-title {
+        font-size: 1rem;
+      }
+
+      .card-img-top {
+        object-fit: cover;
+      }
+    }
+  }
+}
