@@ -1,11 +1,20 @@
 import React from "react";
 
+<<<<<<< HEAD
+import IconProduct from '../../asset/img/package 1.png';
+import IconCart from '../../asset/img/shopping-cart (3) 1.png';
+import '../../asset/css/style.css';
+import HeaderProfile from '../HeaderProfile';
+import ButtonSidebar from '../ButtonSidebar';
+import { useNavigate } from 'react-router-dom';
+=======
 import IconProduct from "../../asset/img/package 1.png";
 import IconCart from "../../asset/img/shopping-cart (3) 1.png";
 import "../../asset/css/style.css";
 import HeaderProfile from "../HeaderProfile";
 import ButtonSidebar from "../ButtonSidebar";
 import { useNavigate } from "react-router-dom";
+>>>>>>> e66bb2369ad571701090437928ba21c23058ca4f
 
 const SidebarProfile = () => {
   const isSeller = localStorage.getItem("role");
