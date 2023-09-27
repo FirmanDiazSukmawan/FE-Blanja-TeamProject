@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+import React, {  } from "react";
+import "./navbarLogin.css";
+=======
 import React, { useEffect, useState } from "react";
 import "../navbar/navbar.css";
+>>>>>>> e66bb2369ad571701090437928ba21c23058ca4f
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

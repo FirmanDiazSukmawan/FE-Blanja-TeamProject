@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+import React from "react";
+import Navbar from "../../component/Navbar/navbar";
+=======
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, { useEffect, useState } from "react";
 
 import Navbar from "../../component/navbar/navbar";
+>>>>>>> e66bb2369ad571701090437928ba21c23058ca4f
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import CarouselList from "../../component/carousel/carousel";
 import Category from "../../component/category/category";
