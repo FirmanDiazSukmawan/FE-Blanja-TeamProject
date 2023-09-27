@@ -152,7 +152,6 @@ function Category() {
                 </div>
               </Link>
             </div>
-
             <div className="item" style={{ backgroundColor: "#D85089" }}>
               <Link to={"/category/socks"} style={{ textDecoration: "none" }}>
                 <div

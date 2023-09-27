@@ -72,7 +72,6 @@ function Home() {
       {!login ? <Navbar /> : <NavbarLogin />}
       <div className="Home">
         <div className="row">
-          <Navbar />
           <section id="carousel" className="container">
             <CarouselList />
           </section>
