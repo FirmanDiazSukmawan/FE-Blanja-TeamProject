@@ -20,10 +20,10 @@ function Login() {
         email: email,
         password: password,
       });
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userId", res.data.data.customer_id);
-      localStorage.setItem("image", res.data.data.image);
-      console.log(res);
+      localStorage.setItem("token",res.data.token);
+      localStorage.setItem("userId",res.data.data.customer_id);
+      localStorage.setItem("image",res.data.data.image);
+      console.log(res)
       Swal.fire({
         text: "Gratz Login succes brother",
         icon: "success",
@@ -47,9 +47,9 @@ function Login() {
         email: email,
         password: password,
       });
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userId", res.data.data.seller_id);
-      localStorage.setItem("image", res.data.data.image);
+      localStorage.setItem("token",res.data.token);
+      localStorage.setItem("userId",res.data.data.seller_id);
+      localStorage.setItem("image",res.data.data.image);
       Swal.fire({
         text: "Gratz Login succes brother",
         icon: "success",
@@ -82,11 +82,11 @@ function Login() {
               <b>Please login with your account</b>
             </p>
             <Tabs
-              variant="pills"
-              defaultActiveKey="Customer"
-              transition={false}
-              id="noanim-tab-example"
-              className="btn-group position-relative top-0 start-50 translate-middle mx-auto mt-3 d-flex justify-content-center align-items-center"
+            variant="pills"
+            defaultActiveKey="Customer"
+            transition={false}
+            id="noanim-tab-example"
+            className="btn-group position-relative top-0 start-50 translate-middle mx-auto mt-3 d-flex justify-content-center align-items-center"
               role="group"
               aria-label="Basic radio toggle button group"
             >

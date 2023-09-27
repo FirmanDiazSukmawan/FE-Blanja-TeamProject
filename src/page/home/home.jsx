@@ -8,9 +8,9 @@ function Home() {
   const login = localStorage.getItem("token");
   return (
     <>
-      {!login ? <Navbar /> : <NavbarLogin />}
-      <div className="d-flex">
-        <h1>HOMEPAGE</h1>
+    {!login ? <Navbar /> : <NavbarLogin />}
+    <div className="d-flex">
+      <h1>HOMEPAGE</h1>
       </div>
     </>
   );

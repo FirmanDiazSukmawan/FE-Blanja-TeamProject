@@ -9,42 +9,45 @@ import {
   faShoppingCart,
   faSliders,
   faBell,
-  faEnvelope,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 
+
 function NavbarLogin() {
-  const navigate = useNavigate();
-  // const [img,setimg] = useState("")
-  const image = localStorage.getItem("image");
 
-  //    const userId = localStorage.getItem("userId")
+    const navigate = useNavigate()
+    // const [img,setimg] = useState("")
+    const image = localStorage.getItem("image")
 
-  //    useEffect(() => {
-  //     if(role === "seller") {
-  //     axios
-  //       .get(`${url}/seller/${userId}`)
-  //       .then((res) => {
-  //         setimg(res.data.data.image)
-  //         console.log(res.data.data.image);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });}
+//    const userId = localStorage.getItem("userId")
 
-  //       else {
-  //         axios
-  //       .get(`${url}/customer/${userId}`)
-  //       .then((res) => {
-  //         setimg(res.data.data.image)
-  //         console.log(res.data.data.image);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //       }
-  //   }, [userId]);
+//    useEffect(() => {
+//     if(role === "seller") {
+//     axios
+//       .get(`${url}/seller/${userId}`)
+//       .then((res) => {
+//         setimg(res.data.data.image)
+//         console.log(res.data.data.image);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });}
 
-  const handleLogout = () => {
+//       else {
+//         axios
+//       .get(`${url}/customer/${userId}`)
+//       .then((res) => {
+//         setimg(res.data.data.image)
+//         console.log(res.data.data.image);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//       }
+//   }, [userId]);
+  
+
+    const handleLogout = () => {
     localStorage.clear();
     navigate("/home");
   };

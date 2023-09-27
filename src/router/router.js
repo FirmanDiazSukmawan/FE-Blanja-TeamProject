@@ -4,6 +4,9 @@ import Home from "../page/home/home";
 import NotFound from "../page/notFound/notFound";
 import Login from "../page/login/login";
 import Register from "../page/register/register";
+import DetailProduct from "../page/detailProduct/DetailProduct"
+import SidebarProfile from "../component/SidebarProfile";
+
 
 function Router() {
   return (
@@ -13,7 +16,9 @@ function Router() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="detailProduct" element={<DetailProduct />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="SidebarProfile" element={<SidebarProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>
