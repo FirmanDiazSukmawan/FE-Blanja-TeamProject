@@ -4,6 +4,8 @@ import style from "./checkout.module.css";
 import bajuKoko from "../../asset/img/bajukoko.png";
 import ModalShipping from "../../component/ModalShipping/ModalShipping";
 import ModalAddress from "../../component/ModalAddress/ModalAddress";
+import ModalPayment from "../../component/ModalPayment/ModalPayment";
+
 const Checkout = () => {
   return (
     <>
@@ -94,9 +96,7 @@ const Checkout = () => {
                 </div>
                 <div className="row">
                   <div className="col-12 d-grid">
-                    <button type="button" class="btn btn-danger">
-                      Select Payment
-                    </button>
+                    <ModalPayment modalName="Select Payment" />
                   </div>
                 </div>
               </div>
