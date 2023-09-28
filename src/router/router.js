@@ -6,8 +6,8 @@ import Login from "../page/login/login";
 import Register from "../page/register/register";
 import DetailProduct from "../page/detailProduct/DetailProduct"
 import SellingProduct from "../component/Dashboard/SellingProduct";
-import SidebarProfile from "../component/SidebarProfile";
 import ProductList from "../page/productList/productList";
+import MyProduct from "../component/Dashboard/MyProduct";
 
 function Router() {
   return (
@@ -20,7 +20,7 @@ function Router() {
           <Route path="category" element={<ProductList />} />
           <Route path="detailProduct" element={<DetailProduct />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="MyProducts" element={<MyProduct />} />
           <Route path="Se" element={<SellingProduct />} />
         </Route>
       </Routes>
