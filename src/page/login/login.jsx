@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../asset/globalStyle.css";
+import '../../asset/css/style.css';
 import { Link, useNavigate } from "react-router-dom";
 import { Tab, Tabs } from "react-bootstrap";
 import style from "./styleLogin.css";
@@ -23,13 +23,16 @@ function Login() {
       localStorage.setItem("token",res.data.token);
       localStorage.setItem("userId",res.data.data.customer_id);
       localStorage.setItem("image",res.data.data.image);
-      console.log(res)
+      localStorage.setItem("role",res.data.data.role);
+      // console.log(res)
       Swal.fire({
         text: "Gratz Login succes brother",
         icon: "success",
       });
-      navigate("/");
-      console.log(res.data.data);
+      navigate("/")
+      
+       
+      // console.log(res.data.data)
     } catch (err) {
       if (err) {
         setErrmsg(err.response.data.message);
@@ -50,12 +53,15 @@ function Login() {
       localStorage.setItem("token",res.data.token);
       localStorage.setItem("userId",res.data.data.seller_id);
       localStorage.setItem("image",res.data.data.image);
+      localStorage.setItem("role",res.data.data.role);
       Swal.fire({
         text: "Gratz Login succes brother",
         icon: "success",
       });
-      navigate("/");
-      console.log(res.data.data);
+      navigate("/")
+      
+       
+      // console.log(res.data.data)
     } catch (err) {
       if (err) {
         setErrmsg(err.response.data.message);

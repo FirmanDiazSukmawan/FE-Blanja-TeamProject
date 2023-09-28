@@ -191,7 +191,7 @@ body {
 /* ============== categories section ================== */
 
 /* ============== section product =============== */
-.card {
+/* .card {
   width: 208px;
   border-radius: 8px;
   margin-right: 25px;
@@ -199,7 +199,7 @@ body {
   box-sizing: border-box;
   box-shadow: 0px 0px 14px 0px rgba(173, 173, 173, 0.25);
   border: none;
-}
+} */
 
 #newProduct .title-categories {
   font-size: 34px;
@@ -3042,3 +3042,7 @@ h5 {
 }
 
 /*  ======================= End Responsive max 991  =========================== */
+form .form-control:focus {
+  border-color: #db3022;
+  box-shadow: 0 0 0 0.2rem rgb(219, 48, 34);
+}

@@ -1,40 +1,92 @@
 import React from "react";
 
-<<<<<<< HEAD
 import IconProduct from '../../asset/img/package 1.png';
 import IconCart from '../../asset/img/shopping-cart (3) 1.png';
 import '../../asset/css/style.css';
 import HeaderProfile from '../HeaderProfile';
-import ButtonSidebar from '../ButtonSidebar';
-import { useNavigate } from 'react-router-dom';
-=======
-import IconProduct from "../../asset/img/package 1.png";
-import IconCart from "../../asset/img/shopping-cart (3) 1.png";
-import "../../asset/css/style.css";
-import HeaderProfile from "../HeaderProfile";
-import ButtonSidebar from "../ButtonSidebar";
-import { useNavigate } from "react-router-dom";
->>>>>>> e66bb2369ad571701090437928ba21c23058ca4f
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { url } from '../../redux/baseUrl/url';
+import { useState } from 'react';
+import ModalProfile from '../ModalUpdateProfileSeller';
+import ModalUpdateCustomer from '../ModalUpdateProfileCustomer';
 
 const SidebarProfile = () => {
-  const isSeller = localStorage.getItem("role");
+  const isSeller = localStorage.getItem('role');
+  const isCustomer = localStorage.getItem('role');
   const navigate = useNavigate();
+  const [users,setUsers] = useState([])
+  const usersId = localStorage.getItem('userId');
+
+  useEffect(() => {
+    if (isSeller === "seller") {
+    axios
+      .get(`${url}/seller/${usersId}`)
+
+      .then((res) => {
+        setUsers(res.data.data);
+        // console.log(res.data.data);
+      })
+      .catch((err) => {
+        return (err);
+      },[usersId]);
+    }
+    else {
+      axios
+      .get(`${url}/customer/${usersId}`)
+
+      .then((res) => {
+        setUsers(res.data.data);
+        // console.log(res);
+      })
+      .catch((err) => {
+        return (err);
+      });
+    }
+  }, [usersId]);
+
+
+
 
   const handleProduct = () => {
-    navigate("/dashboard");
+    if (isSeller) {
+    navigate('/myProduct');
+    }
+    else {navigate('/')}
   };
 
-  const handleSellingProduct = () => {
-    navigate("/dashboard");
+  const handleMyProfile = () => {
+    navigate('/profile');
   };
 
-  if (isSeller === "seller") {
+  const handleStoreProfile =() => {
+    navigate("/storeProfile");
+  }
+  const handleSellingProduct =() => {
+    navigate("/sellingProduct");
+  }
+
+
+  if (isSeller === 'seller') {
     return (
       <>
-        <HeaderProfile />
-
+        <HeaderProfile users={users} />
+        <ModalProfile/>
         <div className="main">
-          <ButtonSidebar />
+          
+        
+
+    
+          <div className="list-item" onClick={handleStoreProfile}>
+      <p>
+        <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <img className="icon-profile" src={require("../../asset/img/blanja.png")} alt="" />
+          <span className="description active ms-3">Store Profile</span>
+        </a>
+      </p>
+    </div>
+    
 
           <div className="list-item">
             <p>
@@ -61,7 +113,7 @@ const SidebarProfile = () => {
                   <span className="description">My Products</span>
                 </button>
 
-                <button className="btn p-0" onClick={handleSellingProduct}>
+                <button Lin className="btn p-0" onClick={handleSellingProduct}>
                   <span className="description">Selling Products</span>
                 </button>
               </div>
@@ -101,11 +153,19 @@ const SidebarProfile = () => {
   } else {
     return (
       <>
-        <HeaderProfile />
-
+        <HeaderProfile users={users}/>
+        <ModalUpdateCustomer/>
         <div className="main">
-          <ButtonSidebar />
+        <div className="list-item">
+      <p>
+        <Link to="/profile" className="btn btn-primary" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <img className="icon-profile" src={require("../../asset/img/blanja.png")} alt="" />
+          <span className="description active ms-3">My Account</span>{' '}
+        </Link>
+      </p>
+    </div>
 
+        
           <div className="list-item">
             <p>
               <a
@@ -126,18 +186,6 @@ const SidebarProfile = () => {
                 </span>{" "}
               </a>
             </p>
-
-            <div className="collapse" id="collapseProduct">
-              <div className="card card-body p-0">
-                <button className="btn p-0" onClick={handleProduct}>
-                  <span className="description">My Products</span>
-                </button>
-
-                <button className="btn p-0" onClick={handleSellingProduct}>
-                  <span className="description">Selling Products</span>
-                </button>
-              </div>
-            </div>
           </div>
 
           <div className="list-item">

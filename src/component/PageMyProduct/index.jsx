@@ -1,13 +1,36 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, {  } from 'react';
-import '../../Assets/css/style.css';
+import React, { useEffect, useState } from 'react';
+import '../../asset/css/style.css';
 import '../../App.css';
 
-import ModalUpdate from '../ModalUpdate/index';
+import ModalProduct from '../ModalProduct';
+import ModalUpdate from '../ModalUpdateProduct';
+import axios from 'axios';
+import { url } from '../../redux/baseUrl/url';
 
 
-const MainSidebar = () => {
+const PageMyProduct
+ = () => {
+
+  const userId = localStorage.getItem('userId')
+  // console.log(userId);
+  const [product,setProduct] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`${url}/product/users/${userId}`)
+
+      .then((res) => {
+        setProduct(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        return (err);
+      });
+  }, [userId]);
+  
+
   return (
     <>
       <h3 className="title mb-0">My Product</h3>
@@ -47,23 +70,20 @@ const MainSidebar = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map((item) => {
+                    {product.map((item) => {
                       return (
                         <>
-                          <ModalUpdate product={item} />
                           <tr>
                             <td className="text-center">
-                              <img crossOrigin="anonymous" src={item.photo} className="photo-table" alt="" />
+                              <img crossOrigin="anonymous" src={item.image_product} className="photo-table" alt="" />
                             </td>
-                            <td>{item.name}</td>
+                            <td>{item.name_product}</td>
                             <td className="text-center">{item.size}</td>
-                            <td className="text-center">{currencyFormat(item.price)}</td>
+                            <td className="text-center">{item.price}</td>
                             <td className="text-center">{item.stock}</td>
 
                             <td className="text-center">
-                              <button type="button" className="btn btn-success me-1" data-bs-toggle="modal" data-bs-target>
-                                <i className="bi bi-pencil-square"></i>
-                              </button>
+                            <ModalUpdate item={item} />
 
                               <button type="button" className="btn btn-danger">
                                 <i className="bi bi-trash3-fill"></i>
@@ -132,4 +152,5 @@ const MainSidebar = () => {
   );
 };
 
-export default MainSidebar;
+export default PageMyProduct
+;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../asset/globalStyle.css";
+import '../../asset/css/style.css';
 import { Link, useNavigate } from "react-router-dom";
 import style from "./styleRegister.css"
 import { Tab, Tabs } from "react-bootstrap";
@@ -56,12 +56,12 @@ function Register() {
       });
        
 
-      // navigate("/login")
+      navigate("/login")
       Swal.fire({
         text: "Gratz Register succes brother",
         icon: "success",
       });
-      console.log(res.data.message)
+      // console.log(res.data.message)
     } catch (err) {
       if (err){
         setErrmsg(err.response.data.message)
