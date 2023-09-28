@@ -1,25 +1,75 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { url } from "../../redux/baseUrl/url";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
-import ProductCard from "../../component/productCard/productCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./productList.css";
+import { Link } from "react-router-dom";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+
 
 function ProductList() {
-  const location = useLocation();
-  const [products, setProducts] = React.useState([]);
-  const currentKeyword = location.pathname.split("/")[2];
+  const {category_id} = useParams()
+  console.log(category_id)
+  const [category, setCategory] = React.useState([]);
+  const [categoryName, setCategoryName] = React.useState([]);
+  const navigate = useNavigate()
+  useEffect(() => {
+    axios
+      .get(`${url}/product/category/${category_id}`)
 
-  React.useEffect(() => {
-    const currentKeyword = location.pathname.split("/")[2];
+      .then((res) => {
+        setCategory(res.data.data);
+      })
+      .catch((err) => {
+        return (err);
+      });
+  }, [category_id]);
 
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    axios
+      .get(`${url}/category/${category_id}`)
 
-    // axios.get(`${url}/product?category=${currentKeyword}`).then((response) => {
-    //   const productData = response?.data?.data;
-    //   setProducts(productData);
-    // });
-  }, []);
+      .then((res) => {
+        setCategoryName(res.data.data[0].name_category);
+      })
+      .catch((err) => {
+        return (err);
+      });
+  }, [category_id]);
+
+
+  const handleClick = (product_id) => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/detailProduct/${product_id}`);
+    }
+  };
+  
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(price);
+  };
+  const renderStars = () => {
+    const starCount = Math.round();
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      const starColor = i < starCount ? "#FF9529" : "gray";
+      stars.push(
+        <FontAwesomeIcon key={i} icon={faStar} size="sm" color={starColor} />
+      );
+    }
+
+    return stars;
+  };
+
 
   return (
     <div className="ProductList" style={{ overflowX: "hidden" }}>
@@ -32,11 +82,42 @@ function ProductList() {
               className="fw-bold lh-1"
               style={{ textTransform: "capitalize" }}
             >
-              {currentKeyword}
+              {categoryName}
             </h2>
           </div>
           <div className="row row-cols-md-5 rows-cols-xs-2">
-            <ProductCard />
+          {category.map((item) => (
+      <div className="ProductCard" onClick={() => handleClick(item.product_id)}>
+        <div className="card mt-3 mb-3 h-100">
+          <img
+            // src={image[0].photo_path}
+            src={item.image_product}
+            className="card-img-top"
+            alt="Product"
+          />
+          <div className="card-body">
+            {/* <h5 className="product-title card-title">{title}</h5> */}
+            <h5 className="product-title card-title">{item.name_product}</h5>
+            {/* <h5 className="price card-title" style={{ color: "#DB3022" }}>
+              {formatPrice(price)}
+            </h5> */}
+            <h5 className="price card-title" style={{ color: "#DB3022" }}>
+            {formatPrice(item.price)}
+            </h5>
+            {/* <small className="text text-muted">{storeName}</small> */}
+            <small className="text text-muted">{item.store_name}</small>
+
+            <div className="row my-2">
+              <div className="ic-rating col-auto pe-0">{renderStars()}</div>
+
+              <div className="rating col-auto ps-0">
+                <small className="text">({5})</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+))}
             {/* {products?.length > 0 ? (
               products.map((product) => (
                 <div className="col" key={product?.product_id}>

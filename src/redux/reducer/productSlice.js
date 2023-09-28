@@ -42,6 +42,13 @@ export const createProduct = createAsyncThunk(
   "product/createProduct",
   async ({ data, saveImage }) => {
     try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
       const formDataToSend = new FormData();
       formDataToSend.append("name_product", data.name_product);
       formDataToSend.append("price", data.price);
@@ -54,7 +61,11 @@ export const createProduct = createAsyncThunk(
       formDataToSend.append("users_id", data.users_id);
       formDataToSend.append("category_id", data.category_id);
 
-      const response = await axios.post(`${url}/product`, formDataToSend);
+      const response = await axios.post(
+        `${url}/product`,
+        formDataToSend,
+        config
+      );
       Swal.fire({
         tittle: "Create Success",
         text: "Create Product Success",
@@ -91,7 +102,10 @@ export const updateProduct = createAsyncThunk(
     formData.append("description", data.description);
 
     try {
-      const response = await axios.put(`${url}/recipe/${product_id}`, formData);
+      const response = await axios.put(
+        `${url}/product/${product_id}`,
+        formData
+      );
 
       if (!response?.data) {
         Swal.fire({

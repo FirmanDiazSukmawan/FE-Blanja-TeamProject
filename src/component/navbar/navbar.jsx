@@ -1,6 +1,6 @@
 import React from "react";
-import "../Navbar/navbar.css";
-import { Link } from "react-router-dom";
+import "./navbar.css";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -10,6 +10,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  };
+
+  const handleMyBag = () => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/myBag}`);
+    }
+    
+  }
   return (
     <div className="navbar">
       <div className="row align-items-center" style={{ width: "100%" }}>
@@ -30,6 +46,7 @@ function Navbar() {
                       type="text"
                       className="form-control decoration-none"
                       placeholder="Search Product"
+                      onClick={handleLogin}
                     />
                     <FontAwesomeIcon
                       id="ic-search"
@@ -57,6 +74,7 @@ function Navbar() {
                       icon={faShoppingCart}
                       size="lg"
                       style={{ cursor: "pointer" }}
+                      onClick={handleMyBag}
                     />
                   </div>
                   <div className="col-auto btn-login">

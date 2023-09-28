@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarProfile from '../../component/SidebarProfile/index';
 import NavbarLogin from '../../component/navbarLogin/navbarLogin';
-import MainSidebar from '../../component/MainSidebar/index';
+import PageMyProduct from '../PageMyProduct/index';
 
 const MyProduct = () => {
   return (
@@ -15,7 +15,7 @@ const MyProduct = () => {
           <div className="main-content vh-100">
             <div className="container">
               <div className="wrapper-card">
-                <MainSidebar />
+                <PageMyProduct />
               </div>
             </div>
           </div>

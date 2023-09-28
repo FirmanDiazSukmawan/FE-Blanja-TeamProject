@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import React from "react";
-import Navbar from "../../component/Navbar/navbar";
-=======
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, { useEffect, useState } from "react";
 
 import Navbar from "../../component/navbar/navbar";
->>>>>>> e66bb2369ad571701090437928ba21c23058ca4f
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import CarouselList from "../../component/carousel/carousel";
 import Category from "../../component/category/category";
@@ -15,9 +10,11 @@ import axios from "axios";
 
 import "./home.css";
 import { url } from "../../redux/baseUrl/url";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const login = localStorage.getItem("token");
+  const navigate = useNavigate()
   const [loadingNew, setLoadingNew] = useState(false);
   const [newProductList, setNewProductList] = useState([]);
   const [currentPageNew, setCurrentPageNew] = useState(1);
@@ -31,10 +28,11 @@ function Home() {
   useEffect(() => {
     setLoadingNew(true);
     axios
-      .get(`${url}/product?page=${currentPageNew}`)
+      .get(`${url}/product/?page=${currentPageNew}&limit=15`)
       .then((response) => {
-        setTotalPageNew(response?.data.pages.total);
+        setTotalPageNew(response?.data.pagination.totalPage);
         setNewProductList(response?.data?.data);
+        console.log(response)
       })
       .catch((err) => {
         console.log(err);
@@ -67,6 +65,13 @@ function Home() {
   const handlePageChangePopular = (newPage) => {
     setCurrentPagePopular(newPage);
   };
+  const handleRecipeClick = (product_id) => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/detailProduct/${product_id}`);
+    }
+  };
   return (
     <>
       {!login ? <Navbar /> : <NavbarLogin />}
@@ -90,14 +95,15 @@ function Home() {
                 {/* <ProductCard /> */}
                 {!loadingNew ? (
                   newProductList?.length > 0 ? (
-                    newProductList.map((newProduct, index) => (
+                    newProductList?.map((newProduct, index) => (
                       <div className="col" key={index}>
                         <ProductCard
-                          productId={newProduct?.product_id}
-                          image={newProduct?.path}
-                          title={newProduct?.product_name}
-                          price={newProduct?.product_price}
-                          storeName={newProduct?.product_category}
+                          product_id={newProduct?.product_id}
+                          image={newProduct?.image_product}
+                          title={newProduct?.name_product}
+                          price={newProduct?.price}
+                          store_name={newProduct?.store_name
+                          }
                           rating={newProduct.score}
                         />
                       </div>

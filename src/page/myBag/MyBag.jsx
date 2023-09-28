@@ -2,7 +2,16 @@ import React from "react";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import style from "./myBag.module.css";
 import bajuKoko from "../../asset/img/bajukoko.png";
+import { useNavigate } from "react-router-dom";
 const MyBag = () => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/checkout`);
+    }
+  };
   return (
     <>
       <NavbarLogin />
@@ -121,8 +130,8 @@ const MyBag = () => {
                 </div>
                 <div className="row">
                   <div className="col-12 d-grid">
-                    <button type="button" class="btn btn-danger">
-                      Choose Another Address
+                    <button type="button" class="btn btn-danger" onClick={handleClick}>
+                      CheckOut
                     </button>
                   </div>
                 </div>

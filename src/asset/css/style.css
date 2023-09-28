@@ -3042,3 +3042,7 @@ h5 {
 }
 
 /*  ======================= End Responsive max 991  =========================== */
+form .form-control:focus {
+  border-color: #db3022;
+  box-shadow: 0 0 0 0.2rem rgb(219, 48, 34);
+}

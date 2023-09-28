@@ -1,10 +1,13 @@
 import React from "react";
 import style from "./detailProduct.module.css";
 import bajukoko from "../../asset/img/bajukoko.png";
-import {AiFillAmazonCircle, AiFillStar, AiOutlineStar} from "react-icons/ai"
+import { AiFillStar, AiOutlineStar} from "react-icons/ai"
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import ProductCard from "../../component/productCard/productCard"
 import gridKoko from "../../asset/img/gridKoko.svg";
+import { Link } from "react-router-dom";
+
+
 const DetailProduct = () => {
   return (
     <>
@@ -13,14 +16,14 @@ const DetailProduct = () => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="#" className={style.breadcrumb}>
+              <Link to="#" className={style.breadcrumb}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className="breadcrumb-item">
-              <a href="#" className={style.breadcrumb}>
+              <Link to="#" className={style.breadcrumb}>
                 Category
-              </a>
+              </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               T-Shirt
