@@ -8,6 +8,8 @@ import DetailProduct from "../page/detailProduct/DetailProduct"
 import SellingProduct from "../component/Dashboard/SellingProduct";
 import SidebarProfile from "../component/SidebarProfile";
 import ProductList from "../page/productList/productList";
+import Checkout from "../page/checkout/Checkout";
+import MyBag from "../page/myBag/MyBag";
 
 function Router() {
   return (
@@ -19,6 +21,8 @@ function Router() {
           <Route path="register" element={<Register />} />
           <Route path="category" element={<ProductList />} />
           <Route path="detailProduct" element={<DetailProduct />} />
+          <Route path="checkout" element={ <Checkout />} />
+          <Route path="myBag" element={ <MyBag />} />
           <Route path="*" element={<NotFound />} />
           <Route path="Dashboard" element={<Dashboard />} />
           <Route path="Se" element={<SellingProduct />} />

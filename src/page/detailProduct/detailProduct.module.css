@@ -1,0 +1,105 @@
+.breadcrumb {
+    text-decoration: none;
+    color:#9b9b9b ;
+}
+
+.productName h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.productName p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9b9b9b;
+}
+
+#price p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9b9b9b;
+}
+
+#price h1 {
+  font-size: 33px;
+  font-weight: bold;
+}
+
+.count button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#btnDark {
+  background-color: #9b9b9b;
+  border: none;
+  border-radius: 50%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#btnLight {
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+#btnLight:hover {
+  background-color: grey;
+}
+
+#size, #jumlah {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#action button {
+    border-radius: 50px;
+}
+
+#button {
+  background-color: white;
+}
+
+#action #outline {
+  background-color: white;
+}
+
+#information {
+    margin-top: 60px;
+}
+
+#information h1{
+    font-size: 32px;
+}
+
+#condition h2{
+    font-size: 20px;
+}
+
+#condition h1{
+    font-size: 20px;
+    color: #DB3022;
+}
+
+#description h2{
+    font-size: 20px;
+}
+
+#description p{
+    font-size: 14px;
+    color: #9b9b9b;
+}
+
+#rating h1{
+    font-weight: 500;
+    font-size: 60px;
+}
+
+#rating span{
+    font-size: 20px;
+    color: #9B9B9B;
+}
