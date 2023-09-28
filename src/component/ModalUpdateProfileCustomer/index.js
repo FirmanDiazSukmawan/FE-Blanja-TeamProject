@@ -50,7 +50,7 @@ function ModalUpdateCustomer() {
   const handleUpload = (e) => {
     const uploader = e.target.files[0];
     setSaveImage(uploader);
-    // console.log(uploader);
+    console.log(uploader);
   };
 
   const handleSubmit = async (e) => {
@@ -62,7 +62,7 @@ function ModalUpdateCustomer() {
       console.log("Error updating profile:", error);
     }
   };
-  //   console.log(userId);
+  // console.log(userId);
 
   return (
     <>

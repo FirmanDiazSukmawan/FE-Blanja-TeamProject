@@ -9,10 +9,19 @@ import DetailProduct from "../page/detailProduct/DetailProduct";
 import SellingProduct from "../component/Dashboard/SellingProduct";
 import ProductList from "../page/productList/productList";
 import MyProduct from "../component/Dashboard/MyProduct";
+import StoreProfile from "../component/Dashboard/StoreProfil";
+import Profile from "../page/Profile/index";
+import ScrollToTop from "../component/scroll/scroll";
+import Checkout from "../page/checkout/Checkout";
+import MyBag from "../page/myBag/MyBag";
+import MyOrder from "../component/Dashboard/MyOrder";
+
+// import Profile from "../page/Profile/profile";
 
 function Router() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
@@ -27,9 +36,9 @@ function Router() {
           <Route path="myProduct" element={<MyProduct />} />
           <Route path="sellingProduct" element={<SellingProduct />} />
           <Route path="storeProfile" element={<StoreProfile />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="MyProducts" element={<MyProduct />} />
-          <Route path="Se" element={<SellingProduct />} />
+          <Route path="myorder" element={<MyOrder />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

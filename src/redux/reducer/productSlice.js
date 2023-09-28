@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url } from "../baseUrl/url";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 
 const initialState = {
   product: [],
@@ -18,6 +19,7 @@ export const getProductId = createAsyncThunk(
   "product/getProductId",
   async (product_id) => {
     const response = await axios.get(`${url}/product/${product_id}`);
+    console.log(response.data);
     return response.data;
   }
 );
@@ -42,12 +44,12 @@ export const createProduct = createAsyncThunk(
   "product/createProduct",
   async ({ data, saveImage }) => {
     try {
-      const token = localStorage.getItem("token");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+      // const token = localStorage.getItem("token");
+      // const config = {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // };
 
       const formDataToSend = new FormData();
       formDataToSend.append("name_product", data.name_product);
@@ -61,11 +63,7 @@ export const createProduct = createAsyncThunk(
       formDataToSend.append("users_id", data.users_id);
       formDataToSend.append("category_id", data.category_id);
 
-      const response = await axios.post(
-        `${url}/product`,
-        formDataToSend,
-        config
-      );
+      const response = await axios.post(`${url}/product`, formDataToSend);
       Swal.fire({
         tittle: "Create Success",
         text: "Create Product Success",

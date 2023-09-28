@@ -32,7 +32,7 @@ function Home() {
       .then((response) => {
         setTotalPageNew(response?.data.pagination.totalPage);
         setNewProductList(response?.data?.data);
-        console.log(response)
+        // console.log(response)
       })
       .catch((err) => {
         console.log(err);
@@ -109,8 +109,8 @@ function Home() {
                       </div>
                     ))
                   ) : (
-                    <div className="col-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-                      <p className="text-center">No products</p>
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
                     </div>
                   )
                 ) : (

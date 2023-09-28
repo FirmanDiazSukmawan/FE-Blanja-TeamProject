@@ -56,13 +56,18 @@ const SidebarProfile = () => {
     else {navigate('/')}
   };
 
-  const handleMyProfile = () => {
-    navigate('/profile');
+  const handleMyOrder = () => {
+    navigate('/myorder');
   };
 
   const handleStoreProfile =() => {
     navigate("/storeProfile");
   }
+
+  const handleMyprofile =() => {
+    navigate("/profile");
+  }
+
   const handleSellingProduct =() => {
     navigate("/sellingProduct");
   }
@@ -80,7 +85,7 @@ const SidebarProfile = () => {
     
           <div className="list-item" onClick={handleStoreProfile}>
       <p>
-        <a className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a className="btn btn-primary" data-bs-toggle="" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           <img className="icon-profile" src={require("../../asset/img/blanja.png")} alt="" />
           <span className="description active ms-3">Store Profile</span>
         </a>
@@ -92,7 +97,7 @@ const SidebarProfile = () => {
             <p>
               <a
                 className="btn btn-primary"
-                data-bs-toggle="collapse"
+                data-bs-toggle=""
                 href="#collapseProduct"
                 role="button"
                 aria-expanded="false"
@@ -107,7 +112,7 @@ const SidebarProfile = () => {
               </a>
             </p>
 
-            <div className="collapse" id="collapseProduct">
+            <div className="" id="collapseProduct">
               <div className="card card-body p-0">
                 <button className="btn p-0" onClick={handleProduct}>
                   <span className="description">My Products</span>
@@ -124,7 +129,7 @@ const SidebarProfile = () => {
             <p>
               <a
                 className="btn btn-primary"
-                data-bs-toggle="collapse"
+                data-bs-toggle=""
                 href="#collapseCart"
                 role="button"
                 aria-expanded="false"
@@ -135,14 +140,14 @@ const SidebarProfile = () => {
               </a>
             </p>
 
-            <div className="collapse" id="collapseCart">
+            <div className="" id="collapseCart">
               <div className="card card-body p-0">
-                <button className="btn p-0">
+                <button className="btn p-0" onClick={handleMyOrder}>
                   <span className="description">List Order</span>
                 </button>
 
-                <button className="btn">
-                  <span className="description">List Cancel Order</span>
+                <button className="btn" >
+                  <span className="description" >List Cancel Order</span>
                 </button>
               </div>
             </div>
@@ -155,10 +160,10 @@ const SidebarProfile = () => {
       <>
         <HeaderProfile users={users}/>
         <ModalUpdateCustomer/>
-        <div className="main">
+        <div className="main" onClick={handleMyprofile}>
         <div className="list-item">
       <p>
-        <Link to="/profile" className="btn btn-primary" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <Link to={"#"} className="btn btn-primary" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="collapseExample">
           <img className="icon-profile" src={require("../../asset/img/blanja.png")} alt="" />
           <span className="description active ms-3">My Account</span>{' '}
         </Link>
@@ -170,7 +175,7 @@ const SidebarProfile = () => {
             <p>
               <a
                 className="btn btn-primary"
-                data-bs-toggle="collapse"
+                data-bs-toggle=""
                 href="#collapseProduct"
                 role="button"
                 aria-expanded="false"
@@ -180,6 +185,7 @@ const SidebarProfile = () => {
                   className="icon-profile-product"
                   src={IconProduct}
                   alt=""
+                  
                 />
                 <span className="description active ms-3">
                   Shipping Address
@@ -188,32 +194,22 @@ const SidebarProfile = () => {
             </p>
           </div>
 
-          <div className="list-item">
-            <p>
+          <div className="list-item" >
+            <p onClick={handleMyOrder}>
               <a
                 className="btn btn-primary"
-                data-bs-toggle="collapse"
-                href="#collapseCart"
+                data-bs-toggle=""
+                href="/myorder"
                 role="button"
                 aria-expanded="false"
-                aria-controls="collapseCart"
+                aria-controls="collapseProduct"
+                onClick={handleMyOrder}
               >
                 <img className="icon-profile-cart" src={IconCart} alt="" />
-                <span className="description active ms-3">My Order</span>{" "}
+                <span className="description active ms-3">My Order</span>
               </a>
             </p>
 
-            <div className="collapse" id="collapseCart">
-              <div className="card card-body p-0">
-                <button className="btn p-0">
-                  <span className="description">List Order</span>
-                </button>
-
-                <button className="btn">
-                  <span className="description">List Cancel Order</span>
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </>

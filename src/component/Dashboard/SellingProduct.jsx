@@ -13,7 +13,7 @@ import { createProduct } from "../../redux/reducer/productSlice";
 
 const SellingProduct = () => {
   const users_id = localStorage.getItem('userId');
-  console.log(users_id);
+  // console.log(users_id);
   const dispatch = useDispatch()
   const [saveImage,setSaveImage] = useState("")
   const [showImage,setShowImage] = useState("")
@@ -38,7 +38,7 @@ const SellingProduct = () => {
        ...data,
        [e.target.name]: e.target.value,
      });
-     console.log(data)
+    //  console.log(data)
    };
 
    const handleUpload =(e) => {
@@ -51,7 +51,7 @@ const SellingProduct = () => {
     setSaveImage(e.target.files[0]);
   }
 
-  console.log(saveImage)
+  // console.log(saveImage)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -69,7 +69,7 @@ const SellingProduct = () => {
       setCategory(response.data.data)
     })
     .catch((error) =>{
-      console.log(error)
+      // console.log(error)
     })
   },[])
 
@@ -86,11 +86,11 @@ console.log(data)
   return (
     <section id="sidebar">
       <NavbarLogin />
-      <div className="container-fluid p-0 d-flex align-items-start vh-100">
+      <div className="container-fluid p-0 d-flex align-items-start">
         <div className="sidebar vh-100 w-25 d-flex">
           <SidebarProfile />
         </div>
-        <div className="main-content vh-100 vw-100">
+        <div className="main-content vh-100">
           <div className="container">
             <div className="wrapper-card py-2">
               <h5>Inventory</h5>
@@ -98,7 +98,7 @@ console.log(data)
               
               <div className="mb-3 py-2">
                 <label htmlFor="exampleFormControlInput1" className="col-sm-3 col-form-label">
-                  Name Of Goods
+                  Name Product
                 </label>
                 <input
                   type="text"
@@ -161,28 +161,30 @@ console.log(data)
                 
               </div>
               
+              <div> 
+              <label for="exampleFormControlInput1" className="col-sm-3 col-form-label">
+                  Category
+                </label>
               <select
-  className="form-select form-select-sm"
-  aria-label="Small select example"
-  onChange={(e) => {
-    handleCategoryChange(e.target.value);
-    setData({
-      ...data,
-      category_id: e.target.value,
-    });
-  }}
-  style={{ width: '20.5vw' }}
-  value={selectedCategoryId}
->
-  <option disabled selected>
-    Open this select menu
-  </option>
-  {categoryArray?.map((item) => (
-    <option key={item.category_id} value={item.category_id}>
-      {item.name_category}
-    </option>
-  ))}
-</select>
+                className="form-select form-select-sm"
+                aria-label="Small select example"
+                onChange={(e) => {
+                  handleCategoryChange(e.target.value);
+                  setData({
+                    ...data,
+                    category_id: e.target.value,
+                  });
+                }}
+                style={{ width: '20.5vw' }}
+                value={selectedCategoryId}
+              >
+                {categoryArray?.map((item) => (
+                  <option key={item.category_id} value={item.category_id}>
+                    {item.name_category}
+                  </option>
+                ))}
+              </select>
+              </div>
               <div className="mb-3 py-2">
                 <label htmlFor="exampleFormControlInput1" className="col-sm-3 col-form-label">
                   Stock

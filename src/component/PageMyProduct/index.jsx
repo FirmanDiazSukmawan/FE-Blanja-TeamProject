@@ -8,6 +8,7 @@ import ModalProduct from '../ModalProduct';
 import ModalUpdate from '../ModalUpdateProduct';
 import axios from 'axios';
 import { url } from '../../redux/baseUrl/url';
+import Swal from 'sweetalert2';
 
 
 const PageMyProduct
@@ -30,6 +31,33 @@ const PageMyProduct
       });
   }, [userId]);
   
+  const handleDelete = async (product_id) => {
+    const result = await Swal.fire({
+      title: 'Delete Product',
+      text: 'Are you sure you want to delete this product?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#dc3545', 
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`${url}/order/${product_id}`);
+        setProduct(product.filter((item) => item.product_id !== product_id));
+        console.log('Product deleted successfully');
+      } catch (error) {
+        console.error('Error deleting product:', error);
+      }
+    }
+    try {
+      
+
+    } catch (err) {
+      console.log(err)
+    }
+  };
 
   return (
     <>
@@ -85,7 +113,7 @@ const PageMyProduct
                             <td className="text-center">
                             <ModalUpdate item={item} />
 
-                              <button type="button" className="btn btn-danger">
+                              <button type="button"  onClick={() => handleDelete(item.product_id)} className="btn btn-danger" >
                                 <i className="bi bi-trash3-fill"></i>
                               </button>
                             </td>

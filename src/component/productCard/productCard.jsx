@@ -15,7 +15,7 @@ function ProductCard({ product_id, image, title, price, store_name, rating }) {
   };
 
   const renderStars = () => {
-    const starCount = Math.round(rating);
+    const starCount = Math.round(4);
     const stars = [];
 
     for (let i = 0; i < 5; i++) {
@@ -28,18 +28,12 @@ function ProductCard({ product_id, image, title, price, store_name, rating }) {
     return stars;
   };
 
-  const handleClick = (product_id) => {
-    if (!localStorage.getItem("token")) {
-      navigate("/login");
-    } else {
-      navigate(`/detailProduct/${product_id}`);
-    }
-  };
+  
 
   return (
-      
+    <Link className="text-decoration-none" to={`/detailProduct/${product_id}`}>
       <div className="ProductCard">
-        <div className="card mt-3 mb-3 h-100" onClick={handleClick}>
+        <div className="card mt-3 mb-3 h-100" >
           <img
             // src={image[0].photo_path}
             src={image}
@@ -62,12 +56,13 @@ function ProductCard({ product_id, image, title, price, store_name, rating }) {
               <div className="ic-rating col-auto pe-0">{renderStars()}</div>
 
               <div className="rating col-auto ps-0">
-                <small className="text">({rating})</small>
+                <small className="text">({10})</small>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </Link>
   );
 }
 

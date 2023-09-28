@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import style from "./myBag.module.css";
 import bajuKoko from "../../asset/img/bajukoko.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { url } from "../../redux/baseUrl/url";
+import Swal from "sweetalert2";
 const MyBag = () => {
   const navigate = useNavigate()
+  const [data,setData] = useState([])
+  const users_id = localStorage.getItem('userId')
+  console.log(users_id)
   const handleClick = () => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
@@ -12,6 +18,54 @@ const MyBag = () => {
       navigate(`/checkout`);
     }
   };
+
+  useEffect(() => {
+    axios.get(`${url}/order/customer/${users_id}`)
+
+    .then((res)=>{
+      setData(res.data.data)
+        console.log(res)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[users_id])
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(price);
+  };
+  const handleDelete = async (order_id) => {
+    const result = await Swal.fire({
+      title: 'Delete Product',
+      text: 'Are you sure you want to delete this product?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#dc3545', 
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`${url}/order/${order_id}`);
+        setData(data.filter((item) => item.order_id !== order_id));
+        console.log('Product deleted successfully');
+      } catch (error) {
+        console.error('Error deleting product:', error);
+      }
+    }
+    try {
+      
+
+    } catch (err) {
+      console.log(err)
+    }
+  };
+  
+
   return (
     <>
       <NavbarLogin />
@@ -48,61 +102,52 @@ const MyBag = () => {
               {/* end card shipping address */}
 
               {/* card another product 1 */}
-              <div className="card mt-5" id={style.card}>
-                <div className="card-body">
-                  <div className="row align-items-center">
-                    <div className="col-1" id={style.checkbox}>
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="#"
-                        id="flexCheckDefault"
+              {data.map((item) => (
+                <div className="card mt-3 cardOrder" key={item.order_id}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-around",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      className="form-check-input ml-3 "
+                      type="checkbox"
+                    />
+                    <div className="ml-5 wrapImage">
+                      <img
+                        style={{ width: 70, height: 70,objectFit:"cover" }}
+                        src={item.image_product}
+                        alt="Gambar 1"
                       />
                     </div>
-                    <div className="col-7 d-flex gap-3">
-                      <div className={style.image}>
-                        <img src={bajuKoko} width={"70px"} alt="" />
+                    <div className="row ml-2 wrap ">
+                      <div className="font-weight-bold wrapTitle">
+                        {item.name_product}
                       </div>
-                      <div className="product">
-                        <h5>Men's Formal Suit - Black</h5>
-                        <p>Zalora Cloth</p>
-                      </div>
+                      <span className="text-secondary wrapTitle">{item.order_size}</span>
+                      <span className="text-secondary wrapTitle">{item.order_color}</span>
                     </div>
-                    <div className="col-4 text-end">
-                      <h4>$20.0</h4>
+                    
+                    <div
+                      className="font-weight-bold mr-3 price"
+                      style={{ width: 140 }}
+                    >
+                      {new Intl.NumberFormat("id-ID", {
+                        style: "currency",
+                        currency: "IDR",
+                      }).format(
+                        item.price * ( item.quantity)
+                      )}
                     </div>
+                    <button className="btn btn-danger" type="button" onClick={() => handleDelete(item.order_id)}><i class="bi bi-trash"></i></button>
                   </div>
                 </div>
-              </div>
+              ))}
               {/* end cardproduct 1 */}
 
               {/* card another product 2 */}
-              <div className="card" id={style.card}>
-                <div className="card-body">
-                  <div className="row align-items-center">
-                    <div className="col-1" id={style.checkbox}>
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckDefault"
-                      />
-                    </div>
-                    <div className="col-7 d-flex gap-3">
-                      <div className={style.image}>
-                        <img src={bajuKoko} width={"70px"} alt="" />
-                      </div>
-                      <div className="product">
-                        <h5>Men's Formal Suit - Black</h5>
-                        <p>Zalora Cloth</p>
-                      </div>
-                    </div>
-                    <div className="col-4 text-end">
-                      <h4>$20.0</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
               {/* end card product 2 */}
             </div>
           </div>

@@ -33,7 +33,9 @@ const Dashboard = () => {
                 <h3 className="title mb-0">My Profile Customer</h3>
                 <span className="sub-title">Manage your profile information</span>
                 <hr className="mb-4" />
-        {isLoading? "loading...": 
+        {isLoading? <div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>: 
                 <div className="row">
                   <div className="col-lg-8">
                     <form>

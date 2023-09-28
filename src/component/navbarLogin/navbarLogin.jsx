@@ -20,37 +20,39 @@ function NavbarLogin() {
 
     const navigate = useNavigate()
     // const [img,setimg] = useState("")
-    const image = localStorage.getItem("image")
+    // const image = localStorage.getItem("image")
+    const role = localStorage.getItem("role")
     const [search,setSearch] = useState("")
     const [data,setData] = useState([])
+    const [img,setimg] = useState([])
     const [loading,setLoading] = useState(false)
 
-//    const userId = localStorage.getItem("userId")
+   const userId = localStorage.getItem("userId")
 
-//    useEffect(() => {
-//     if(role === "seller") {
-//     axios
-//       .get(`${url}/seller/${userId}`)
-//       .then((res) => {
-//         setimg(res.data.data.image)
-//         console.log(res.data.data.image);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });}
+   useEffect(() => {
+    if(role === "seller") {
+    axios
+      .get(`${url}/seller/${userId}`)
+      .then((res) => {
+        setimg(res.data.data.image)
+        console.log(res.data.data.image);
+      })
+      .catch((err) => {
+        console.log(err);
+      });}
 
-//       else {
-//         axios
-//       .get(`${url}/customer/${userId}`)
-//       .then((res) => {
-//         setimg(res.data.data.image)
-//         console.log(res.data.data.image);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//       }
-//   }, [userId]);
+      else {
+        axios
+      .get(`${url}/customer/${userId}`)
+      .then((res) => {
+        setimg(res.data.data.image)
+        console.log(res.data.data.image);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      }
+  }, [userId]);
   
     useEffect(() => {
         if(search.trim() === ""){
@@ -70,23 +72,7 @@ function NavbarLogin() {
     },[search])
 // console.log(data)
 
-    const handleProfile = () => {
-      if (!localStorage.getItem("token")) {
-        navigate("/login");
-      } else {
-        navigate(`/profile}`);
-      }
-      
-    }
-
-    const handleMyBag = () => {
-      if (!localStorage.getItem("token")) {
-        navigate("/login");
-      } else {
-        navigate(`/myBag}`);
-      }
-      
-    }
+console.log(img)
 
     const handleLogout = () => {
     localStorage.clear();
@@ -166,8 +152,9 @@ function NavbarLogin() {
                     />
                   </div>
                   <div className="col-auto">
-                    <img src={image} className="iconProfile" alt="" onClick={handleProfile} />
-                    
+                    <Link to ={"/profile"}>
+                    <img src={img} className="iconProfile" alt=""  />
+                    </Link>
                   </div>
 
                   <div className="col-auto btn-login">

@@ -8,13 +8,15 @@ import "./productList.css";
 import { Link } from "react-router-dom";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
+import { useState } from "react";
 
 
 function ProductList() {
   const {category_id} = useParams()
-  console.log(category_id)
+  // console.log(category_id)
   const [category, setCategory] = React.useState([]);
   const [categoryName, setCategoryName] = React.useState([]);
+  const [loading,setLoading] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
     axios
@@ -22,8 +24,10 @@ function ProductList() {
 
       .then((res) => {
         setCategory(res.data.data);
+        setLoading(false)
       })
       .catch((err) => {
+        setLoading(true)
         return (err);
       });
   }, [category_id]);
@@ -34,8 +38,10 @@ function ProductList() {
 
       .then((res) => {
         setCategoryName(res.data.data[0].name_category);
+        setLoading(false)
       })
       .catch((err) => {
+        setLoading(true)
         return (err);
       });
   }, [category_id]);
@@ -57,7 +63,7 @@ function ProductList() {
     }).format(price);
   };
   const renderStars = () => {
-    const starCount = Math.round();
+    const starCount = Math.round(4);
     const stars = [];
 
     for (let i = 0; i < 5; i++) {
@@ -74,7 +80,9 @@ function ProductList() {
   return (
     <div className="ProductList" style={{ overflowX: "hidden" }}>
       <NavbarLogin />
-
+  {loading?(<div class="spinner-border text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>) :(
       <section id="category">
         <div className="container mt-4">
           <div className="row">
@@ -111,7 +119,7 @@ function ProductList() {
               <div className="ic-rating col-auto pe-0">{renderStars()}</div>
 
               <div className="rating col-auto ps-0">
-                <small className="text">({5})</small>
+                <small className="text">({10  })</small>
               </div>
             </div>
           </div>
@@ -139,6 +147,7 @@ function ProductList() {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 }
