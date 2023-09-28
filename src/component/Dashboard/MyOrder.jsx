@@ -3,7 +3,7 @@ import SidebarProfile from "../SidebarProfile/index";
 import NavbarLogin from "../navbarLogin/navbarLogin";
 import "../../asset/css/style.css";
 
-const MyProduct = () => {
+const MyOrder = () => {
   return (
     <>
       <section id="sidebar">
@@ -317,4 +317,4 @@ const MyProduct = () => {
   );
 };
 
-export default MyProduct;
+export default MyOrder;
