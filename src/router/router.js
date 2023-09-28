@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../page/home/home";
@@ -7,13 +8,7 @@ import Register from "../page/register/register";
 import DetailProduct from "../page/detailProduct/DetailProduct";
 import SellingProduct from "../component/Dashboard/SellingProduct";
 import ProductList from "../page/productList/productList";
-import Checkout from "../page/checkout/Checkout";
-import MyBag from "../page/myBag/MyBag";
 import MyProduct from "../component/Dashboard/MyProduct";
-import StoreProfile from "../component/Dashboard/StoreProfil";
-import Profile from "../page/Profile/index";
-
-// import Profile from "../page/Profile/profile";
 
 function Router() {
   return (
@@ -33,6 +28,8 @@ function Router() {
           <Route path="sellingProduct" element={<SellingProduct />} />
           <Route path="storeProfile" element={<StoreProfile />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="MyProducts" element={<MyProduct />} />
+          <Route path="Se" element={<SellingProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>
