@@ -1,0 +1,12 @@
+#button {
+    font-weight: 700;
+    color: #DB3022;
+    background-color: white;
+    padding-left: 0;
+    text-decoration: none;
+}
+
+.modalShipping {
+    max-width: 810px;
+}
+

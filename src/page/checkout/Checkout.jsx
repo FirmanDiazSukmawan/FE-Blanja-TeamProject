@@ -1,7 +1,11 @@
 import React from "react";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
-import style from "./checkout.module.css"
+import style from "./checkout.module.css";
 import bajuKoko from "../../asset/img/bajukoko.png";
+import ModalShipping from "../../component/ModalShipping/ModalShipping";
+import ModalAddress from "../../component/ModalAddress/ModalAddress";
+import ModalPayment from "../../component/ModalPayment/ModalPayment";
+
 const Checkout = () => {
   return (
     <>
@@ -21,37 +25,29 @@ const Checkout = () => {
                     Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok
                     c 16] Sokaraja, Kab. Banyumas, 53181
                   </p>
-                  <button type="button" id={style.choose} class="btn btn-outline-secondary">
-                    Choose Another Address
-                  </button>
+                  <div className="d-flex">
+                    <div className="me-3">
+                      <ModalShipping modalName="Choose Another Address" />
+                    </div>
+                    <div>
+                      <ModalAddress modalName="Add Another Address" />
+                    </div>
+                  </div>
                 </div>
               </div>
               {/* end card shipping address */}
 
               {/* card another product 1 */}
-              <div
-                className="card mt-5"
-                id={style.card}
-              >
-                <div
-                  className="d-flex align-items-center"
-             
-                >
+              <div className="card mt-5" id={style.card}>
+                <div className="d-flex align-items-center">
                   <div className={style.image}>
                     <img src={bajuKoko} width={"70px"} alt="" />
                   </div>
                   <div className="card-body" id={style.brand}>
-                    <h3>
-                      Andreas Jane
-                    </h3>
-                    <p>
-                      Zalora Cloth
-                    </p>
+                    <h3>Andreas Jane</h3>
+                    <p>Zalora Cloth</p>
                   </div>
-                  <div
-                    className={style.price}
-           
-                  >
+                  <div className={style.price}>
                     <h4>$20.0</h4>
                   </div>
                 </div>
@@ -59,28 +55,16 @@ const Checkout = () => {
               {/* end cardproduct 1 */}
 
               {/* card another product 2 */}
-              <div
-                className="card mt-5 mb-5"
-                id={style.card}
-              >
-                <div
-                  className="d-flex align-items-center"
-              
-                >
+              <div className="card mt-5 mb-5" id={style.card}>
+                <div className="d-flex align-items-center">
                   <div className={style.image}>
                     <img src={bajuKoko} width={"70px"} alt="" />
                   </div>
                   <div className="card-body" id={style.brand}>
-                    <h3 >
-                      Andreas Jane
-                    </h3>
-                    <p >
-                      Zalora Cloth
-                    </p>
+                    <h3>Andreas Jane</h3>
+                    <p>Zalora Cloth</p>
                   </div>
-                  <div
-                    className={style.price}
-                  >
+                  <div className={style.price}>
                     <h4>$20.0</h4>
                   </div>
                 </div>
@@ -93,7 +77,7 @@ const Checkout = () => {
               <div className="card-body">
                 <h3>Shopping Summary</h3>
                 <div className="row">
-                  <div className="col-6" >
+                  <div className="col-6">
                     <p>Order</p>
                     <p>Delivery</p>
                   </div>
@@ -112,9 +96,7 @@ const Checkout = () => {
                 </div>
                 <div className="row">
                   <div className="col-12 d-grid">
-                    <button type="button" class="btn btn-danger">
-                      Choose Another Address
-                    </button>
+                    <ModalPayment modalName="Select Payment" />
                   </div>
                 </div>
               </div>
