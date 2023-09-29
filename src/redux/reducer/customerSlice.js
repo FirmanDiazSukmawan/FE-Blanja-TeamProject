@@ -4,31 +4,31 @@ import { url } from "../baseUrl/url";
 import Swal from "sweetalert2";
 
 const initialState = {
-  seller: [],
+  customer: [],
   status: "idle",
   isLoading: false,
 };
 
-export const getSellerById = createAsyncThunk(
-  "seller/getSellerById",
+export const getCustomerById = createAsyncThunk(
+  "customer/getCustomerById",
   async (userId) => {
-    const response = await axios.get(`${url}/seller/${userId}`);
-    console.log(response);
-    return response.data;
+    const response = await axios.get(`${url}/customer/${userId}`);
+    return response?.data;
   }
 );
 
-export const updateSeller = createAsyncThunk(
-  "seller/updateSeller",
+export const updateCustomer = createAsyncThunk(
+  "customer/updateCustomer",
   async ({ userId, data, saveImage }) => {
     try {
       const formData = new FormData();
-      formData.append("store_name", data.store_name);
+      formData.append("name", data.name);
       formData.append("email", data.email);
-      formData.append("phone", data.phone);
-      formData.append("store_description", data.store_description);
+      formData.append("phone_number", data.phone_number);
+      formData.append("gender", data.gender);
+      formData.append("birthday", data.birthday);
       formData.append("image", saveImage);
-      const response = await axios.put(`${url}/seller/${userId}`, formData);
+      const response = await axios.put(`${url}/customer/${userId}`, formData);
       if (!response) {
         Swal.fire({
           text: "please,input data",
@@ -58,44 +58,44 @@ export const updateSeller = createAsyncThunk(
   }
 );
 
-export const sellerSlice = createSlice({
-  name: "seller",
+export const customerSlice = createSlice({
+  name: "customer",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getSellerById.pending, (state) => {
+      .addCase(getCustomerById.pending, (state) => {
         state.status = "loading";
         state.isLoading = true;
       })
-      .addCase(getSellerById.fulfilled, (state, action) => {
+      .addCase(getCustomerById.fulfilled, (state, action) => {
         state.status = "success";
-        state.seller = action.payload;
+        state.customer = action.payload;
         state.isLoading = false;
       })
-      .addCase(getSellerById.rejected, (state, action) => {
+      .addCase(getCustomerById.rejected, (state, action) => {
         state.status = "failed";
-        state.seller = action.error.message;
+        state.customer = action.error.message;
         state.isLoading = false;
       })
 
-      .addCase(updateSeller.pending, (state) => {
+      .addCase(updateCustomer.pending, (state) => {
         state.status = "loading";
         state.isLoading = true;
       })
-      .addCase(updateSeller.fulfilled, (state, action) => {
+      .addCase(updateCustomer.fulfilled, (state, action) => {
         state.status = "success";
-        state.seller = action.payload;
+        state.customer = action.payload;
         state.isLoading = false;
       })
-      .addCase(updateSeller.rejected, (state, action) => {
+      .addCase(updateCustomer.rejected, (state, action) => {
         state.status = "failed";
-        state.seller = action.error.message;
+        state.customer = action.error.message;
         state.isLoading = false;
       });
   },
 });
 
-export const sellerSelector = (state) => state.seller?.seller?.data;
-export const isLoadingSelector = (state) => state.seller?.isLoading;
-export default sellerSlice.reducer;
+export const customerSelector = (state) => state.customer?.customer?.data;
+export const thisLoadingSelector = (state) => state.customer?.isLoading;
+export default customerSlice.reducer;

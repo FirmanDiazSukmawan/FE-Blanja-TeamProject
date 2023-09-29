@@ -1,14 +1,64 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import '../../Assets/css/style.css';
+import '../../asset/css/style.css';
 import '../../App.css';
 
 import ModalProduct from '../ModalProduct';
-import ModalUpdate from '../ModalUpdate';
+import ModalUpdate from '../ModalUpdateProduct';
+import axios from 'axios';
+import { url } from '../../redux/baseUrl/url';
+import Swal from 'sweetalert2';
 
 
-const MainSidebar = () => {
+const PageMyProduct
+ = () => {
+
+  const userId = localStorage.getItem('userId')
+  // console.log(userId);
+  const [product,setProduct] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`${url}/product/users/${userId}`)
+
+      .then((res) => {
+        setProduct(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        return (err);
+      });
+  }, [userId]);
+  
+  const handleDelete = async (product_id) => {
+    const result = await Swal.fire({
+      title: 'Delete Product',
+      text: 'Are you sure you want to delete this product?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#dc3545', 
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`${url}/order/${product_id}`);
+        setProduct(product.filter((item) => item.product_id !== product_id));
+        console.log('Product deleted successfully');
+      } catch (error) {
+        console.error('Error deleting product:', error);
+      }
+    }
+    try {
+      
+
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
   return (
     <>
       <h3 className="title mb-0">My Product</h3>
@@ -48,25 +98,22 @@ const MainSidebar = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map((item) => {
+                    {product.map((item) => {
                       return (
                         <>
-                          <ModalUpdate product={item} />
                           <tr>
                             <td className="text-center">
-                              <img crossOrigin="anonymous" src={item.photo} className="photo-table" alt="" />
+                              <img crossOrigin="anonymous" src={item.image_product} className="photo-table" alt="" />
                             </td>
-                            <td>{item.name}</td>
+                            <td>{item.name_product}</td>
                             <td className="text-center">{item.size}</td>
-                            <td className="text-center">{currencyFormat(item.price)}</td>
+                            <td className="text-center">{item.price}</td>
                             <td className="text-center">{item.stock}</td>
 
                             <td className="text-center">
-                              <button type="button" className="btn btn-success me-1" data-bs-toggle="modal" data-bs-target={`#update${item.id_product}`}>
-                                <i className="bi bi-pencil-square"></i>
-                              </button>
+                            <ModalUpdate item={item} />
 
-                              <button type="button" className="btn btn-danger" onClick={() => handleDelete(item.id_product)}>
+                              <button type="button"  onClick={() => handleDelete(item.product_id)} className="btn btn-danger" >
                                 <i className="bi bi-trash3-fill"></i>
                               </button>
                             </td>
@@ -133,4 +180,5 @@ const MainSidebar = () => {
   );
 };
 
-export default MainSidebar;
+export default PageMyProduct
+;

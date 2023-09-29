@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url } from "../baseUrl/url";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 
 const initialState = {
   product: [],
@@ -18,6 +19,7 @@ export const getProductId = createAsyncThunk(
   "product/getProductId",
   async (product_id) => {
     const response = await axios.get(`${url}/product/${product_id}`);
+    console.log(response.data);
     return response.data;
   }
 );
@@ -42,6 +44,13 @@ export const createProduct = createAsyncThunk(
   "product/createProduct",
   async ({ data, saveImage }) => {
     try {
+      // const token = localStorage.getItem("token");
+      // const config = {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // };
+
       const formDataToSend = new FormData();
       formDataToSend.append("name_product", data.name_product);
       formDataToSend.append("price", data.price);
@@ -91,7 +100,10 @@ export const updateProduct = createAsyncThunk(
     formData.append("description", data.description);
 
     try {
-      const response = await axios.put(`${url}/recipe/${product_id}`, formData);
+      const response = await axios.put(
+        `${url}/product/${product_id}`,
+        formData
+      );
 
       if (!response?.data) {
         Swal.fire({

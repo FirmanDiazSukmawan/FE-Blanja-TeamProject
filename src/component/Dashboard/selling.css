@@ -1,0 +1,8 @@
+#myDIV {
+    width:100%;
+    height:200px !important;
+    background-color:#FFFFFF;
+    border:2px#D4D4D4;
+    border-style: dashed;
+    margin-top: 4px;
+  }

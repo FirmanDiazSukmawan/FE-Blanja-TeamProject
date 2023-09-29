@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "../navbar/navbar.css";
+import { React,useEffect, useState } from "react";
+import "./navbarLogin.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,41 +11,68 @@ import {
   faBell,
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { url } from "../../redux/baseUrl/url";
+import SearchPage from "../SearchPage/SearchPage";
 
 
 function NavbarLogin() {
 
     const navigate = useNavigate()
     // const [img,setimg] = useState("")
-    const image = localStorage.getItem("image")
+    // const image = localStorage.getItem("image")
+    const role = localStorage.getItem("role")
+    const [search,setSearch] = useState("")
+    const [data,setData] = useState([])
+    const [img,setimg] = useState([])
+    const [loading,setLoading] = useState(false)
 
-//    const userId = localStorage.getItem("userId")
+   const userId = localStorage.getItem("userId")
 
-//    useEffect(() => {
-//     if(role === "seller") {
-//     axios
-//       .get(`${url}/seller/${userId}`)
-//       .then((res) => {
-//         setimg(res.data.data.image)
-//         console.log(res.data.data.image);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });}
+   useEffect(() => {
+    if(role === "seller") {
+    axios
+      .get(`${url}/seller/${userId}`)
+      .then((res) => {
+        setimg(res.data.data.image)
+        console.log(res.data.data.image);
+      })
+      .catch((err) => {
+        console.log(err);
+      });}
 
-//       else {
-//         axios
-//       .get(`${url}/customer/${userId}`)
-//       .then((res) => {
-//         setimg(res.data.data.image)
-//         console.log(res.data.data.image);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//       }
-//   }, [userId]);
+      else {
+        axios
+      .get(`${url}/customer/${userId}`)
+      .then((res) => {
+        setimg(res.data.data.image)
+        console.log(res.data.data.image);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      }
+  }, [userId]);
   
+    useEffect(() => {
+        if(search.trim() === ""){
+            setData([])
+            return
+        }
+        setLoading(true)
+        axios.get(`${url}/product/?limit=5&sort=ASC&search=${search}`)
+        .then((res) => {
+            setData(res.data.data)
+            setLoading(false)
+        })
+        .catch((err) => {
+            console.log(err);
+            setLoading(false)
+        })
+    },[search])
+// console.log(data)
+
+console.log(img)
 
     const handleLogout = () => {
     localStorage.clear();
@@ -66,18 +93,22 @@ function NavbarLogin() {
               </Link>
               <div className="main-nav col ms-4">
                 <div className="row align-items-center d-flex">
-                  <div className="col search">
+                  <div className="col search ">
                     <input
                       type="text"
                       className="form-control decoration-none"
                       placeholder="Search Product"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
                     />
+                   <SearchPage data={data}/>
                     <FontAwesomeIcon
                       id="ic-search"
                       className="ic"
                       icon={faMagnifyingGlass}
                       size="lg"
                     />
+                    
                   </div>
                   <div className="col-auto filters">
                     <FontAwesomeIcon
@@ -92,13 +123,14 @@ function NavbarLogin() {
               <div className="action col-auto">
                 <div className="row align-items-center d-flex">
                   <div className="col-auto">
+                    <Link to={"/myBag"}>
                     <FontAwesomeIcon
                       id="ic-shopping-cart"
                       className="ic"
                       icon={faShoppingCart}
                       size="lg"
                       style={{ cursor: "pointer" }}
-                    />
+                    /></Link>
                   </div>
                   <div className="col-auto">
                     <FontAwesomeIcon
@@ -116,10 +148,13 @@ function NavbarLogin() {
                       icon={faEnvelope}
                       size="lg"
                       style={{ cursor: "pointer" }}
+                      
                     />
                   </div>
                   <div className="col-auto">
-                    <img src={image} className="iconProfile" alt="" />
+                    <Link to ={"/profile"}>
+                    <img src={img} className="iconProfile" alt=""  />
+                    </Link>
                   </div>
 
                   <div className="col-auto btn-login">

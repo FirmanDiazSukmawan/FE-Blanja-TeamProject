@@ -1,0 +1,19 @@
+#modalButton {
+    background-color: white;
+    color: grey;
+    border-style: dashed;
+    border-color: grey;
+}
+
+#checkbox input {
+    width: 20px;
+    height: 20px;
+}
+
+#checkbox input:checked {
+    background-color: #DB3022;
+}
+
+#checkbox label {
+    margin-left: 5px;
+}

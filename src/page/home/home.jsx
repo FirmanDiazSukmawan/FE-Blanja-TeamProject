@@ -10,9 +10,11 @@ import axios from "axios";
 
 import "./home.css";
 import { url } from "../../redux/baseUrl/url";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const login = localStorage.getItem("token");
+  const navigate = useNavigate()
   const [loadingNew, setLoadingNew] = useState(false);
   const [newProductList, setNewProductList] = useState([]);
   const [currentPageNew, setCurrentPageNew] = useState(1);
@@ -26,10 +28,11 @@ function Home() {
   useEffect(() => {
     setLoadingNew(true);
     axios
-      .get(`${url}/product?page=${currentPageNew}`)
+      .get(`${url}/product/?page=${currentPageNew}&limit=15`)
       .then((response) => {
-        setTotalPageNew(response?.data.pages.total);
+        setTotalPageNew(response?.data.pagination.totalPage);
         setNewProductList(response?.data?.data);
+        // console.log(response)
       })
       .catch((err) => {
         console.log(err);
@@ -62,6 +65,13 @@ function Home() {
   const handlePageChangePopular = (newPage) => {
     setCurrentPagePopular(newPage);
   };
+  const handleRecipeClick = (product_id) => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/detailProduct/${product_id}`);
+    }
+  };
   return (
     <>
       {!login ? <Navbar /> : <NavbarLogin />}
@@ -85,21 +95,22 @@ function Home() {
                 {/* <ProductCard /> */}
                 {!loadingNew ? (
                   newProductList?.length > 0 ? (
-                    newProductList.map((newProduct, index) => (
+                    newProductList?.map((newProduct, index) => (
                       <div className="col" key={index}>
                         <ProductCard
-                          productId={newProduct?.product_id}
-                          image={newProduct?.path}
-                          title={newProduct?.product_name}
-                          price={newProduct?.product_price}
-                          storeName={newProduct?.product_category}
+                          product_id={newProduct?.product_id}
+                          image={newProduct?.image_product}
+                          title={newProduct?.name_product}
+                          price={newProduct?.price}
+                          store_name={newProduct?.store_name
+                          }
                           rating={newProduct.score}
                         />
                       </div>
                     ))
                   ) : (
-                    <div className="col-12 col-md-12 col-lg-12 col-xl-12 mt-5">
-                      <p className="text-center">No products</p>
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
                     </div>
                   )
                 ) : (
