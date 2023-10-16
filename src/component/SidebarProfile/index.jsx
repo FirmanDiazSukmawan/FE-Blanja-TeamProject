@@ -18,6 +18,7 @@ const SidebarProfile = () => {
   const navigate = useNavigate();
   const [users,setUsers] = useState([])
   const usersId = localStorage.getItem('userId');
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
     if (isSeller === "seller") {
@@ -27,6 +28,7 @@ const SidebarProfile = () => {
       .then((res) => {
         setUsers(res.data.data);
         // console.log(res.data.data);
+        setLoading(false)
       })
       .catch((err) => {
         return (err);
@@ -38,6 +40,7 @@ const SidebarProfile = () => {
 
       .then((res) => {
         setUsers(res.data.data);
+        setLoading(false)
         // console.log(res);
       })
       .catch((err) => {
@@ -72,12 +75,13 @@ const SidebarProfile = () => {
     navigate("/sellingProduct");
   }
 
-
+  
   if (isSeller === 'seller') {
     return (
       <>
         <HeaderProfile users={users} />
         <ModalProfile/>
+        
         <div className="main">
           
         

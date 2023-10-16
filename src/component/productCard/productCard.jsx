@@ -27,8 +27,14 @@ function ProductCard({ product_id, image, title, price, store_name, rating }) {
 
     return stars;
   };
-
   
+  const handleRecipeClick = (product_id) => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate(`/detailProduct/${product_id}`);
+    }
+  };
 
   return (
     <Link className="text-decoration-none" to={`/detailProduct/${product_id}`}>

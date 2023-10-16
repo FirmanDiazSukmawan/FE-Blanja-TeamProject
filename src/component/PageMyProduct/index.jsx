@@ -44,7 +44,7 @@ const PageMyProduct
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`${url}/order/${product_id}`);
+        await axios.delete(`${url}/product/${product_id}`);
         setProduct(product.filter((item) => item.product_id !== product_id));
         console.log('Product deleted successfully');
       } catch (error) {

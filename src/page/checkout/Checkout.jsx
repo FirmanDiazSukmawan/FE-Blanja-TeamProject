@@ -52,6 +52,7 @@ const Checkout = () => {
     <>
     
       <NavbarLogin />
+      {loading?("loading..."):(
       <div className="container mt-5">
       
         <div className="row">
@@ -60,7 +61,7 @@ const Checkout = () => {
             <div className="shippingAddress mt-5" id={style.shipping}>
               <h5>Shipping Address</h5>
               {/* card shipping address */}
-              {data.map((item)=>( 
+              {data?.map((item)=>( 
               <div className="card" id={style.card}>
                 <div className="card-body">
                   <h5>{item.recipients_name}</h5>
@@ -85,7 +86,7 @@ const Checkout = () => {
               {/* end card shipping address */}
 
               {/* card another product 1 */}
-              {order.map((item)=>(
+              {order?.map((item)=>(
               <div className="card mt-5" id={style.card}>
                 <div className="d-flex align-items-center">
                   <div className={style.image}>
@@ -93,7 +94,7 @@ const Checkout = () => {
                   </div>
                   <div className="card-body" id={style.brand}>
                     <h3>{item.name_product}</h3>
-                    <p>{item.order_color}</p>
+                    <p>color: {item.order_color}</p>
                     <p>Size : {item.order_size}</p>
                     <p>Quantity : {item.quantity}</p>
                   </div>
@@ -142,6 +143,7 @@ const Checkout = () => {
         </div>
        
       </div>
+      )}
     </>
   );
 };

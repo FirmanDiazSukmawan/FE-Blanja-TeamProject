@@ -120,7 +120,7 @@ const DetailProduct = () => {
   return (
     <>
       <NavbarLogin />
-      
+      {loadingNew?("loading..."):(
       <div className="container mt-5">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
@@ -139,6 +139,7 @@ const DetailProduct = () => {
             </li>
           </ol>
         </nav>
+        
         <div className="product mt-5">
           <div className="row">
             <section className="col-lg-4">
@@ -395,6 +396,7 @@ const DetailProduct = () => {
             </div>
        
       </div>
+      )}
     </>
   );
 };

@@ -72,7 +72,7 @@ function NavbarLogin() {
     },[search])
 // console.log(data)
 
-console.log(img)
+// console.log(img)
 
     const handleLogout = () => {
     localStorage.clear();
