@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import style from "./myBag.module.css";
-import bajuKoko from "../../asset/img/bajukoko.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { url } from "../../redux/baseUrl/url";
@@ -102,7 +101,7 @@ const MyBag = () => {
               {/* end card shipping address */}
 
               {/* card another product 1 */}
-              {data.map((item) => (
+              {data?.map((item) => (
                 <div className="card mt-3 cardOrder" key={item.order_id}>
                   <div
                     style={{

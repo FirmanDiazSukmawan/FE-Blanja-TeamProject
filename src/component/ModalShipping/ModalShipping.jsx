@@ -2,6 +2,7 @@ import { useState } from "react";
 import style from "./shipping.module.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import ModalAddress from "../ModalAddress/ModalAddress";
 
 function ModalShipping(props) {
   const [show, setShow] = useState(false);
@@ -26,9 +27,11 @@ function ModalShipping(props) {
           <div className="text-center">
             <h4>Choose Another Address</h4>
           </div>
-
+        
           <div className="container">
-            <div className="row mt-5 d-grid"></div>
+            <div className="row mt-5 d-grid">
+            <ModalAddress modalName ="Add Another Address"/>
+            </div>
             <div className="row mt-3">
               <div className="card">
                 <div className="card-body">
