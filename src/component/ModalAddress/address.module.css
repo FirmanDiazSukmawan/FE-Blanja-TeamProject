@@ -3,6 +3,8 @@
     color: grey;
     border-style: dashed;
     border-color: grey;
+    padding-top: 37px;
+    padding-bottom: 37px;
 }
 
 #checkbox input {

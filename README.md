@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Blanja Website Team Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Blanja is an E-commerce website developed as part of a group assignment with a team of 4 members.
 
-## Available Scripts
+## Table of Contents
+- [Description](#description)
+- [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
+- [Framework](#framework)
+- [Package Dependencies](#package-dependencies)
+- [Usage](#usage)
+- [Authors](#authors)
+- [Related Project](#related-project)
+- [Contributing](#contributing)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+Blanja E-commerce Website is a platform where users can buy and sell various products. It focuses on providing a user-friendly interface for both sellers and buyers. The website allows sellers to list their products, manage inventory, and interact with potential customers, while buyers can browse products and make purchases.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```html
+|── Frontend
+   |── public          <!-- Public assets -->
+   |── src             <!-- Project source code -->
+       |── assets      <!-- Images used by multer -->
+       |── components  <!-- Layouts -->
+       |── pages       <!-- Pages -->
+       |── redux       <!-- State management -->
+       |── router      <!-- Endpoints -->
+   |── .gitignore      <!-- List of files to be ignored by Git -->
+   |── README.md       <!-- Project documentation for GitHub -->
+```
 
-### `npm test`
+## Framework
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[ReactJS](https://react.dev/)
 
-### `npm run build`
+## Package Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```json
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@reduxjs/toolkit": "^1.9.6",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.0",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-multi-carousel": "^2.8.4",
+    "react-paginate": "^8.2.0",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "5.0.1",
+    "sweetalert2": "^11.7.28",
+    "web-vitals": "^2.1.4"
+  }
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To use this project, follow these steps:
 
-### `npm run eject`
+1. **Clone This Repository**
+   ```bash
+   git clone https://github.com/xTats/FE-Blanja-TeamProject
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install Dependencies**
+   ```bash
+   cd FE-Blanja-TeamProject
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Set Up Database**
+   - Create a PostgreSQL database and note down the database name, username, password, and host.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Run the Backend Server**
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. **Start Development Server**
+   ```bash
+   npm run start
+   ```
 
-## Learn More
+6. **Access the Website**
+   Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Screenshots
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- Add screenshots here -->
 
-### Code Splitting
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Firman Diaz Sukmawan](https://github.com/xTats) - Project Leader & Fullstack Developer
+- [Ramdlan Faqih](https://github.com/RamdlanFaqih) - Fullstack Developer
+- [Fajar Adi Prasetio](https://github.com/FajarAdi25) - Frontend Developer
+- [Muhammad Jajuni](https://github.com/MuhamadJajuni) - Frontend Developer
 
-### Analyzing the Bundle Size
+## Related Project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+RESTful API for this web application, clone this for development Blanja.
 
-### Making a Progressive Web App
+[BE-Blanja-Team-Project](https://github.com/xTats/BE-Blanja-Team-Project)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please make sure to update tests as appropriate.

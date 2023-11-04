@@ -77,7 +77,7 @@ const Checkout = () => {
                       <ModalShipping modalName="Choose Another Address" />
                     </div>
                     <div>
-                      <ModalAddress modalName="Add Another Address" />
+                      {/* <ModalAddress modalName="Add Another Address" /> */}
                     </div>
                   </div>
                 </div>
