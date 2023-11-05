@@ -1,16 +1,68 @@
-import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import style from "./payment.module.css";
 import goPay from "../../asset/img/goPay.svg";
 import posIndo from "../../asset/img/posIndo.svg";
 import masterCard from "../../asset/img/masterCard.svg";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { url } from "../../redux/baseUrl/url";
+import axios from "axios";
+
 
 function ModalPayment(props) {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const navigate = useNavigate();
+
+  const user_id = localStorage.getItem("userId")
+  const [loading,setLoading] = useState(false)
+  const [data,setData] = useState([])
+  const [order,setOrder] = useState([])
+  useEffect(()=>{
+    axios.get(`${url}/addres/${user_id}`)
+    .then((res)=>{
+      setData(res.data.data)
+
+      setLoading(false)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[user_id])
+
+  useEffect(()=>{
+    axios.get(`${url}/order/customer/${user_id}`)
+    .then((res)=>{
+      setOrder(res.data.data)
+      console.log(res.data.data)
+      setLoading(false)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[user_id])
+
+  const handlePaidNowClick = () => {
+    axios.patch(`${url}/order/status/paid/${user_id}`)
+    .then((res) => {
+      console.log(res.data.data);
+
+      navigate(`/profile`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(price);
+  };
 
   return (
     <>
@@ -113,8 +165,8 @@ function ModalPayment(props) {
             </div>
        
           <div className="col-4 offset-2 mb-5">
-            <Button variant="danger" onClick={handleClose}>
-              Save Changes
+            <Button variant="danger" onClick={handlePaidNowClick}>
+              Paid Now
             </Button>
           </div>
           </div>

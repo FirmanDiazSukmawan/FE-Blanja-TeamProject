@@ -1,7 +1,6 @@
 import React from "react";
 import NavbarLogin from "../../component/navbarLogin/navbarLogin";
 import style from "./checkout.module.css";
-import bajuKoko from "../../asset/img/bajukoko.png";
 import ModalShipping from "../../component/ModalShipping/ModalShipping";
 import ModalAddress from "../../component/ModalAddress/ModalAddress";
 import ModalPayment from "../../component/ModalPayment/ModalPayment";
@@ -31,8 +30,9 @@ const Checkout = () => {
   useEffect(()=>{
     axios.get(`${url}/order/customer/${user_id}`)
     .then((res)=>{
-      setOrder(res.data.data)
-      console.log(res.data.data)
+      const unpaid = res.data.data.filter((item) => item.status === "unpaid")
+      setOrder(unpaid)
+      console.log(unpaid)
       setLoading(false)
     })
     .catch((err)=>{
