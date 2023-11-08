@@ -15,6 +15,7 @@ import ScrollToTop from "../component/scroll/scroll";
 import Checkout from "../page/checkout/Checkout";
 import MyBag from "../page/myBag/MyBag";
 import MyOrder from "../component/Dashboard/MyOrder";
+import ShippingAdress from "../component/Dashboard/ShippingAddress";
 
 // import Profile from "../page/Profile/profile";
 
@@ -38,6 +39,7 @@ function Router() {
           <Route path="storeProfile" element={<StoreProfile />} />
           <Route path="MyProducts" element={<MyProduct />} />
           <Route path="myorder" element={<MyOrder />} />
+          <Route path="shippingAddress" element={<ShippingAdress />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -1,101 +1,110 @@
 import React from "react";
 
-import IconProduct from '../../asset/img/package 1.png';
-import IconCart from '../../asset/img/shopping-cart (3) 1.png';
-import '../../asset/css/style.css';
-import HeaderProfile from '../HeaderProfile';
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { url } from '../../redux/baseUrl/url';
-import { useState } from 'react';
-import ModalProfile from '../ModalUpdateProfileSeller';
-import ModalUpdateCustomer from '../ModalUpdateProfileCustomer';
+import IconProduct from "../../asset/img/package 1.png";
+import IconCart from "../../asset/img/shopping-cart (3) 1.png";
+import "../../asset/css/style.css";
+import HeaderProfile from "../HeaderProfile";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import { url } from "../../redux/baseUrl/url";
+import { useState } from "react";
+import ModalProfile from "../ModalUpdateProfileSeller";
+import ModalUpdateCustomer from "../ModalUpdateProfileCustomer";
 
 const SidebarProfile = () => {
-  const isSeller = localStorage.getItem('role');
-  const isCustomer = localStorage.getItem('role');
+  const isSeller = localStorage.getItem("role");
+  const isCustomer = localStorage.getItem("role");
   const navigate = useNavigate();
-  const [users,setUsers] = useState([])
-  const usersId = localStorage.getItem('userId');
-  const [loading,setLoading] = useState(false)
+  const [users, setUsers] = useState([]);
+  const usersId = localStorage.getItem("userId");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isSeller === "seller") {
-    axios
-      .get(`${url}/seller/${usersId}`)
-
-      .then((res) => {
-        setUsers(res.data.data);
-        // console.log(res.data.data);
-        setLoading(false)
-      })
-      .catch((err) => {
-        return (err);
-      },[usersId]);
-    }
-    else {
       axios
-      .get(`${url}/customer/${usersId}`)
+        .get(`${url}/seller/${usersId}`)
 
-      .then((res) => {
-        setUsers(res.data.data);
-        setLoading(false)
-        // console.log(res);
-      })
-      .catch((err) => {
-        return (err);
-      });
+        .then((res) => {
+          setUsers(res.data.data);
+          // console.log(res.data.data);
+          setLoading(false);
+        })
+        .catch(
+          (err) => {
+            return err;
+          },
+          [usersId]
+        );
+    } else {
+      axios
+        .get(`${url}/customer/${usersId}`)
+
+        .then((res) => {
+          setUsers(res.data.data);
+          setLoading(false);
+          // console.log(res);
+        })
+        .catch((err) => {
+          return err;
+        });
     }
   }, [usersId]);
 
-
-
-
   const handleProduct = () => {
     if (isSeller) {
-    navigate('/myProduct');
+      navigate("/myProduct");
+    } else {
+      navigate("/");
     }
-    else {navigate('/')}
   };
 
   const handleMyOrder = () => {
-    navigate('/myorder');
+    navigate("/myorder");
   };
 
-  const handleStoreProfile =() => {
+  const handleStoreProfile = () => {
     navigate("/storeProfile");
-  }
+  };
 
-  const handleMyprofile =() => {
+  const handleMyprofile = () => {
     navigate("/profile");
-  }
+  };
 
-  const handleSellingProduct =() => {
+  const handleSellingProduct = () => {
     navigate("/sellingProduct");
+  };
+
+  const handleShippingAdress = () => {
+    navigate("/shippingAddress")
   }
 
-  
-  if (isSeller === 'seller') {
+  if (isSeller === "seller") {
     return (
       <>
         <HeaderProfile users={users} />
-        <ModalProfile/>
-        
-        <div className="main">
-          
-        
+        <ModalProfile />
 
-    
+        <div className="main">
           <div className="list-item" onClick={handleStoreProfile}>
-      <p>
-        <a className="btn btn-primary" data-bs-toggle="" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <img className="icon-profile" src={require("../../asset/img/blanja.png")} alt="" />
-          <span className="description active ms-3">Store Profile</span>
-        </a>
-      </p>
-    </div>
-    
+            <p>
+              <a
+                className="btn btn-primary"
+                data-bs-toggle=""
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <img
+                  className="icon-profile"
+                  src={require("../../asset/img/blanja.png")}
+                  alt=""
+                />
+                <span className="description active ms-3">Store Profile</span>
+              </a>
+            </p>
+          </div>
 
           <div className="list-item">
             <p>
@@ -150,8 +159,8 @@ const SidebarProfile = () => {
                   <span className="description">List Order</span>
                 </button>
 
-                <button className="btn" >
-                  <span className="description" >List Cancel Order</span>
+                <button className="btn">
+                  <span className="description">List Cancel Order</span>
                 </button>
               </div>
             </div>
@@ -162,25 +171,35 @@ const SidebarProfile = () => {
   } else {
     return (
       <>
-        <HeaderProfile users={users}/>
-        <ModalUpdateCustomer/>
+        <HeaderProfile users={users} />
+        <ModalUpdateCustomer />
         <div className="main" onClick={handleMyprofile}>
-        <div className="list-item">
-      <p>
-        <Link to={"#"} className="btn btn-primary" data-bs-toggle="" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <img className="icon-profile" src={require("../../asset/img/blanja.png")} alt="" />
-          <span className="description active ms-3">My Account</span>{' '}
-        </Link>
-      </p>
-    </div>
-
-        
           <div className="list-item">
             <p>
+              <Link
+                to={"#"}
+                className="btn btn-primary"
+                data-bs-toggle=""
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <img
+                  className="icon-profile"
+                  src={require("../../asset/img/blanja.png")}
+                  alt=""
+                />
+                <span className="description active ms-3">My Account</span>{" "}
+              </Link>
+            </p>
+          </div>
+
+          <div className="list-item">
+            <p onClick={handleShippingAdress}>
               <a
                 className="btn btn-primary"
                 data-bs-toggle=""
-                href="#collapseProduct"
+                href="/shippingAddress"
                 role="button"
                 aria-expanded="false"
                 aria-controls="collapseProduct"
@@ -189,16 +208,15 @@ const SidebarProfile = () => {
                   className="icon-profile-product"
                   src={IconProduct}
                   alt=""
-                  
                 />
                 <span className="description active ms-3">
                   Shipping Address
-                </span>{" "}
+                </span>
               </a>
             </p>
           </div>
 
-          <div className="list-item" >
+          <div className="list-item">
             <p onClick={handleMyOrder}>
               <a
                 className="btn btn-primary"
@@ -213,7 +231,6 @@ const SidebarProfile = () => {
                 <span className="description active ms-3">My Order</span>
               </a>
             </p>
-
           </div>
         </div>
       </>
