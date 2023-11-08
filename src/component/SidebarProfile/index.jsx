@@ -26,7 +26,7 @@ const SidebarProfile = () => {
         .get(`${url}/seller/${usersId}`)
 
         .then((res) => {
-          setUsers(res.data.data);
+          setUsers(res?.data?.data);
           // console.log(res.data.data);
           setLoading(false);
         })
@@ -41,7 +41,7 @@ const SidebarProfile = () => {
         .get(`${url}/customer/${usersId}`)
 
         .then((res) => {
-          setUsers(res.data.data);
+          setUsers(res?.data?.data);
           setLoading(false);
           // console.log(res);
         })
@@ -49,7 +49,7 @@ const SidebarProfile = () => {
           return err;
         });
     }
-  }, [usersId]);
+  }, [usersId,isSeller]);
 
   const handleProduct = () => {
     if (isSeller) {

@@ -105,7 +105,7 @@ console.log(data)
                   className="form-control"
                   id="input1"
                   style={{ width: '20.5vw' }}
-                  value={data.name_product}
+                  value={data?.name_product}
                   onChange={handleChange}
                   name="name_product"
                 />
@@ -124,7 +124,7 @@ console.log(data)
                   className="form-control"
                   id="input1"
                   style={{ width: '20.5vw' }}
-                  value={data.price}
+                  value={data?.price}
                   onChange={handleChange}
                   name="price"
                 />
@@ -139,7 +139,7 @@ console.log(data)
                   className="form-control"
                   id="input1"
                   style={{ width: '20.5vw' }}
-                  value={data.color}
+                  value={data?.color}
                   onChange={handleChange}
                   name="color"
                 />
@@ -154,7 +154,7 @@ console.log(data)
                   className="form-control"
                   id="input1"
                   style={{ width: '20.5vw' }}
-                  value={data.size}
+                  value={data?.size}
                   onChange={handleChange}
                   name="size"
                 />
@@ -178,9 +178,9 @@ console.log(data)
                 style={{ width: '20.5vw' }}
                 value={selectedCategoryId}
               >
-                {categoryArray?.map((item) => (
-                  <option key={item.category_id} value={item.category_id}>
-                    {item.name_category}
+                {categoryArray?.map((item,index) => (
+                  <option key={index} value={item.category_id}>
+                    {item?.name_category}
                   </option>
                 ))}
               </select>
@@ -194,7 +194,7 @@ console.log(data)
                   className="form-control"
                   id="input1"
                   style={{ width: '20.5vw' }}
-                  value={data.stock}
+                  value={data?.stock}
                   onChange={handleChange}
                   name="stock"
                 />
@@ -208,7 +208,7 @@ console.log(data)
                   className="form-control"
                   id="input1"
                   style={{ width: '20.5vw' }}
-                  value={data.condition}
+                  value={data?.condition}
                   onChange={handleChange}
                   name="condition"
                 />

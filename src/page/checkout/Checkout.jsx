@@ -12,13 +12,15 @@ import axios from "axios";
 const Checkout = () => {
   
   const user_id = localStorage.getItem("userId")
+  // console.log(user_id);
   const [loading,setLoading] = useState(false)
   const [data,setData] = useState([])
   const [order,setOrder] = useState([])
   useEffect(()=>{
-    axios.get(`${url}/addres/${user_id}`)
+    axios.get(`${url}/addres/customer/${user_id}`)
     .then((res)=>{
-      setData(res.data.data)
+      console.log(res)
+      setData(res?.data?.data)
 
       setLoading(false)
     })
@@ -28,17 +30,21 @@ const Checkout = () => {
   },[user_id])
 
   useEffect(()=>{
-    axios.get(`${url}/order/customer/${user_id}`)
+    let status = "unpaid"
+    axios.get(`${url}/order/${user_id}/${status}`)
     .then((res)=>{
-      const unpaid = res.data.data.filter((item) => item.status === "unpaid")
-      setOrder(unpaid)
-      console.log(unpaid)
+      // const unpaid = res.data.data.filter((item) => item.status === "unpaid")
+      // setOrder(unpaid)
+      setOrder(res?.data?.data)
       setLoading(false)
+      // console.log(unpaid)
     })
     .catch((err)=>{
       console.log(err)
     })
   },[user_id])
+  
+  // console.log(order)
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("id-ID", {
@@ -47,7 +53,7 @@ const Checkout = () => {
     }).format(price);
   };
 
-  console.log(order)
+  // console.log(data)
   return (
     <>
     
@@ -61,16 +67,16 @@ const Checkout = () => {
             <div className="shippingAddress mt-5" id={style.shipping}>
               <h5>Shipping Address</h5>
               {/* card shipping address */}
-              {data?.map((item)=>( 
-              <div className="card" id={style.card}>
+              {data?.map((item,index)=>( 
+              <div className="card" id={style.card} key={index}>
                 <div className="card-body">
-                  <h5>{item.recipients_name}</h5>
-                  <span>{item.phone}</span>
+                  <h5>{item?.recipients_name}</h5>
+                  <span>{item?.phone}</span>
                   <p>
-                    <span>{item.addres} </span>
-                    <span>{item.home_addres} </span>
-                    <span>{item.city} </span>
-                    <span>{item.postal_code}</span>
+                    <span>{item?.addres} </span>
+                    <span>{item?.home_addres} </span>
+                    <span>{item?.city} </span>
+                    <span>{item?.postal_code}</span>
                   </p>
                   <div className="d-flex">
                     <div className="me-3">
@@ -86,20 +92,20 @@ const Checkout = () => {
               {/* end card shipping address */}
 
               {/* card another product 1 */}
-              {order?.map((item)=>(
-              <div className="card mt-5" id={style.card}>
+              {order?.map((item,index)=>(
+              <div className="card mt-5" id={style.card} key={index}>
                 <div className="d-flex align-items-center">
                   <div className={style.image}>
-                    <img src={item.image_product} width={"70px"} alt="" />
+                    <img src={item?.image_product} width={"70px"} alt="" />
                   </div>
                   <div className="card-body" id={style.brand}>
-                    <h3>{item.name_product}</h3>
-                    <p>color: {item.order_color}</p>
-                    <p>Size : {item.order_size}</p>
-                    <p>Quantity : {item.quantity}</p>
+                    <h3>{item?.name_product}</h3>
+                    <p>color: {item?.order_color}</p>
+                    <p>Size : {item?.order_size}</p>
+                    <p>Quantity : {item?.quantity}</p>
                   </div>
                   <div className={style.price}>
-                    <h4>{formatPrice(item.price)}</h4>
+                    <h4>{formatPrice(item?.price)}</h4>
                   </div>
                 </div>
               </div>

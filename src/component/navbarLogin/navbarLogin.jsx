@@ -34,8 +34,8 @@ function NavbarLogin() {
     axios
       .get(`${url}/seller/${userId}`)
       .then((res) => {
-        setimg(res.data.data.image)
-        console.log(res.data.data.image);
+        setimg(res?.data?.data?.image)
+        // console.log(res.data.data.image);
       })
       .catch((err) => {
         console.log(err);
@@ -45,8 +45,8 @@ function NavbarLogin() {
         axios
       .get(`${url}/customer/${userId}`)
       .then((res) => {
-        setimg(res.data.data.image)
-        console.log(res.data.data.image);
+        setimg(res?.data?.data?.image)
+        // console.log(res.data.data.image);
       })
       .catch((err) => {
         console.log(err);

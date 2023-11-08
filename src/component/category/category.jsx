@@ -78,20 +78,20 @@ function Category() {
             itemClass="style-item"
           >
             
-            {loading?"loading.." :category?.map((item) => (
+            {loading?"loading.." :category?.map((item,index) => (
     <div
       className="item"
-      key={item.category_id}
+      key={index}
       style={{ backgroundColor: getRandomColor() }}
     >
       <Link to={`/category/${item.category_id}`} style={{ textDecoration: "none" }}>
         <div
           className="img-item"
           style={{
-            backgroundImage: `url('${item.image}')`,
+            backgroundImage: `url('${item?.image}')`,
           }}
         >
-          <h2 className="title-item text-white">{item.name_category}</h2>
+          <h2 className="title-item text-white">{item?.name_category}</h2>
         </div>
       </Link>
     </div>

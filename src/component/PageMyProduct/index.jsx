@@ -23,8 +23,8 @@ const PageMyProduct
       .get(`${url}/product/users/${userId}`)
 
       .then((res) => {
-        setProduct(res.data.data);
-        console.log(res.data.data);
+        setProduct(res?.data?.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {
         return (err);
@@ -42,10 +42,10 @@ const PageMyProduct
       confirmButtonColor: '#dc3545', 
     });
 
-    if (result.isConfirmed) {
+    if (result?.isConfirmed) {
       try {
         await axios.delete(`${url}/product/${product_id}`);
-        setProduct(product.filter((item) => item.product_id !== product_id));
+        setProduct(product?.filter((item) => item?.product_id !== product_id));
         console.log('Product deleted successfully');
       } catch (error) {
         console.error('Error deleting product:', error);
@@ -98,27 +98,27 @@ const PageMyProduct
                     </tr>
                   </thead>
                   <tbody>
-                    {product.map((item) => {
+                    {product?.map((item,index) => {
                       return (
-                        <>
-                          <tr>
+                        
+                          <tr key={index}>
                             <td className="text-center">
-                              <img crossOrigin="anonymous" src={item.image_product} className="photo-table" alt="" />
+                              <img crossOrigin="anonymous" src={item?.image_product} className="photo-table" alt="" />
                             </td>
-                            <td>{item.name_product}</td>
-                            <td className="text-center">{item.size}</td>
-                            <td className="text-center">{item.price}</td>
-                            <td className="text-center">{item.stock}</td>
+                            <td>{item?.name_product}</td>
+                            <td className="text-center">{item?.size}</td>
+                            <td className="text-center">{item?.price}</td>
+                            <td className="text-center">{item?.stock}</td>
 
                             <td className="text-center">
                             <ModalUpdate item={item} />
 
-                              <button type="button"  onClick={() => handleDelete(item.product_id)} className="btn btn-danger" >
+                              <button type="button"  onClick={() => handleDelete(item?.product_id)} className="btn btn-danger" >
                                 <i className="bi bi-trash3-fill"></i>
                               </button>
                             </td>
                           </tr>
-                        </>
+                       
                       );
                     })}
                   </tbody>

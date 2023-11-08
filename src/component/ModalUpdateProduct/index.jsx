@@ -42,12 +42,12 @@ function ModalUpdate(item) {
 
     const formDataToSend = new FormData();
     formDataToSend.append("image_product", saveImage);
-    formDataToSend.append("name_product", data.name_product);
-    formDataToSend.append("price", data.price);
-    formDataToSend.append("color", data.color);
-    formDataToSend.append("size", data.size);
-    formDataToSend.append("stock", data.stock);
-    formDataToSend.append("description", data.description);
+    formDataToSend.append("name_product", data?.name_product);
+    formDataToSend.append("price", data?.price);
+    formDataToSend.append("color", data?.color);
+    formDataToSend.append("size", data?.size);
+    formDataToSend.append("stock", data?.stock);
+    formDataToSend.append("description", data?.description);
 
     try {
       const response = await axios.put(
@@ -94,7 +94,7 @@ function ModalUpdate(item) {
             placeholder="name recipes"
             className="my-3"
             name="name_product"
-            value={data.name_product}
+            value={data?.name_product}
             onChange={handleChange}
           />
           <Form.Control
@@ -102,7 +102,7 @@ function ModalUpdate(item) {
             placeholder="price"
             className="my-3"
             name="price"
-            value={data.price}
+            value={data?.price}
             onChange={handleChange}
           />
           <Form.Control
@@ -110,7 +110,7 @@ function ModalUpdate(item) {
             placeholder="color"
             className="my-3"
             name="color"
-            value={data.color}
+            value={data?.color}
             onChange={handleChange}
           />
           <Form.Control
@@ -118,7 +118,7 @@ function ModalUpdate(item) {
             placeholder="size"
             className="my-3"
             name="size"
-            value={data.size}
+            value={data?.size}
             onChange={handleChange}
           />
           <Form.Control
@@ -126,7 +126,7 @@ function ModalUpdate(item) {
             placeholder="stock"
             className="my-3"
             name="stock"
-            value={data.stock}
+            value={data?.stock}
             onChange={handleChange}
           />
            <Form.Control
@@ -134,7 +134,7 @@ function ModalUpdate(item) {
             placeholder="description"
             style={{ height: "100px" }}
             name="description"
-            value={data.description}
+            value={data?.description}
             onChange={handleChange}
           />
         </Modal.Body>

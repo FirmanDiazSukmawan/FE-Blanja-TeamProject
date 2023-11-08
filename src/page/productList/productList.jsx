@@ -94,26 +94,26 @@ function ProductList() {
             </h2>
           </div>
           <div className="row row-cols-md-5 rows-cols-xs-2">
-          {category.map((item) => (
-      <div className="ProductCard" onClick={() => handleClick(item.product_id)}>
+          {category.map((item,index) => (
+      <div className="ProductCard" onClick={() => handleClick(item?.product_id)} key={index}>
         <div className="card mt-3 mb-3 h-100">
           <img
             // src={image[0].photo_path}
-            src={item.image_product}
+            src={item?.image_product}
             className="card-img-top"
             alt="Product"
           />
           <div className="card-body">
             {/* <h5 className="product-title card-title">{title}</h5> */}
-            <h5 className="product-title card-title">{item.name_product}</h5>
+            <h5 className="product-title card-title">{item?.name_product}</h5>
             {/* <h5 className="price card-title" style={{ color: "#DB3022" }}>
               {formatPrice(price)}
             </h5> */}
             <h5 className="price card-title" style={{ color: "#DB3022" }}>
-            {formatPrice(item.price)}
+            {formatPrice(item?.price)}
             </h5>
             {/* <small className="text text-muted">{storeName}</small> */}
-            <small className="text text-muted">{item.store_name}</small>
+            <small className="text text-muted">{item?.store_name}</small>
 
             <div className="row my-2">
               <div className="ic-rating col-auto pe-0">{renderStars()}</div>

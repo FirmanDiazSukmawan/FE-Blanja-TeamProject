@@ -12,6 +12,9 @@ import axios from "axios";
 
 
 function ModalPayment(props) {
+  const {order_id}= props
+
+  console.log(order_id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

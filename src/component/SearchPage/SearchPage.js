@@ -13,7 +13,7 @@ function SearchPage({ data }) {
           paddingTop: "2%",
         }}
       >
-        {data.map((item) => (
+        {data?.map((item,index) => (
           <div
             className="search"
             style={{
@@ -28,17 +28,17 @@ function SearchPage({ data }) {
               borderRadius: "20px",
               backgroundColor: "#fafafa",
             }}
-            key={item.product_id}
+            key={index}
           >
             <img
-              src={item.image_product}
+              src={item?.image_product}
               className="card-img "
               id="cardimg"
               alt="..."
               style={{ width: "5vh", height: "5vh" }}
             />
             <p className="text-center" style={{ fontSize: "1.5vh" }}>
-              {item.name_product}
+              {item?.name_product}
             </p>
           </div>
         ))}

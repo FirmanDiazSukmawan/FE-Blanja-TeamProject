@@ -4,8 +4,31 @@ import SidebarProfile from "../SidebarProfile/index";
 import NavbarLogin from "../navbarLogin/navbarLogin";
 import "../../asset/css/style.css";
 import ModalAddress from "../ModalAddress/ModalAddress";
+import axios from "axios";
+import { url } from "../../redux/baseUrl/url";
 
 const MyOrder = () => {
+const [data,setData]=useState([])
+const users_id = localStorage.getItem("userId")
+const [loading,setLoading] = useState(false)
+
+useEffect(()=>{
+  const getAddres = async() => {
+  try{
+  const res = await axios.get(`${url}/addres/users/${users_id}`)
+  setData(res.data.data)
+  setLoading(false)
+  
+  }
+  catch(err){
+    console.log(err);
+    setLoading(true)
+  }
+}
+getAddres()
+},[users_id])
+  
+console.log(data)
   return (
     <>
       <section id="sidebar">
@@ -26,16 +49,18 @@ const MyOrder = () => {
             </div>
             <div className="row mt-3">
               <div className="card">
-                <div className="card-body">
-                  <h5>Andreas Jane</h5>
+                {loading? "Loading...": data?.map((item,index)=>(
+                <div className="card-body" key={index}>
+                  <h5>{item?.recipients_name}</h5>
                   <p>
-                    <span>Perumahan Sapphire Mediterania, </span>
-                    <span>Wiradadi, Kec. Sokaraja, </span>
-                    <span>Kabupaten Banyumas, Jawa Tengah </span>
-                    <span>53181</span>
+                    <span>{item?.addres} </span>
+                    <span>{item?.home_addres} </span>
+                    <span>{item?.city} </span>
+                    <span>{item?.postal_code}</span>
                   </p>
                   <Link>Change Address</Link>
                 </div>
+                ))}
               </div>
             </div>
           </div>

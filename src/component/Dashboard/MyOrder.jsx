@@ -19,7 +19,7 @@ const MyOrder = () => {
         .get(`${url}/order/seller/${users_id}`)
         .then((res) => {
           setOrder(res.data.data);
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           console.log(err);
@@ -29,22 +29,23 @@ const MyOrder = () => {
         .get(`${url}/order/customer/${users_id}`)
         .then((res) => {
           setOrder(res.data.data);
-          console.log(res);
+          // console.log(res.data.data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [users_id, role]);
+  }, [users_id,role]);
 
   const paidOrders = order.filter(item => item.status === 'paid');
-  const onDeliveryOrders = order.filter(item => item.status === 'on delivery')
+  const onDeliveryOrders = order?.filter(item => item.status === 'on delivery')
   const deliveredOrders = order.filter(item => item.status === 'delivered')
+  console.log(onDeliveryOrders)
   
   const handleDelivery = (customer_id, seller_id) => {
     axios.patch(`${url}/order/status/delivery/${customer_id}/${seller_id}`)
     .then((res) => {
-      console.log(res.data.data);
+      console.log(res?.data?.data);
       window.location.reload();
     })
     .catch((err) => {
@@ -55,9 +56,11 @@ const MyOrder = () => {
   const handleDelivered = (customer_id) => {
     axios.patch (`${url}/order/status/delivered/${customer_id}`)
     .then((res) => {
-      console.log(res.data.data);
+      console.log(res?.data?.data);
 
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     })
     .catch((err) => {
       console.log(err);
@@ -253,24 +256,24 @@ const MyOrder = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {paidOrders.map((item) => {
+                                {paidOrders?.map((item,index) => {
                                   return (
                                     <>
-                                      <tr className="text-center">
+                                      <tr className="text-center" key={index}>
                                         <td>
                                           <img
                                             crossOrigin="anonymous"
-                                            src={item.image_product}
+                                            src={item?.image_product}
                                             className="photo-table"
                                             alt=""
                                           />
                                         </td>
-                                        <td>{item.name_product}</td>
-                                        <td>{item.size}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.stock}</td>
+                                        <td>{item?.name_product}</td>
+                                        <td>{item?.size}</td>
+                                        <td>{item?.price}</td>
+                                        <td>{item?.stock}</td>
                                         <td>
-                                          <button className="btn btn-danger" onClick={() => handleDelivery(item.customer_id, item.seller_id)}>
+                                          <button className="btn btn-danger" onClick={() => handleDelivery(item?.customer_id, item?.seller_id)}>
                                             Confirm
                                           </button>
                                         </td>
@@ -308,31 +311,31 @@ const MyOrder = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {onDeliveryOrders.map((item) => {
+                                {onDeliveryOrders?.map((item,i) => {
                                   return (
                                     <>
-                                      <tr className="text-center">
+                                      <tr className="text-center" key={i}>
                                         <td>
                                           <img
                                             crossOrigin="anonymous"
-                                            src={item.image_product}
+                                            src={item?.image_product}
                                             className="photo-table"
                                             alt=""
                                           />
                                         </td>
-                                        <td>{item.name_product}</td>
-                                        <td>{item.size}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.stock}</td>
+                                        <td>{item?.name_product}</td>
+                                        <td>{item?.size}</td>
+                                        <td>{item?.price}</td>
+                                        <td>{item?.stock}</td>
                                         <td>
-                                          <button className="btn btn-danger" onClick={() => handleDelivered(item.customer_id, item.seller_id)}>
-                                            Deliver
-                                          </button>
+                                          <div>
+                                           {item?.status}
+                                          </div>
                                         </td>
                                       </tr>
                                     </>
                                   );
-                                })}
+                                 })} 
                               </tbody>
                             </table>
                           </div>
@@ -391,31 +394,28 @@ const MyOrder = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {deliveredOrders.map((item) => {
+                                {deliveredOrders?.map((item,index) => {
                                   return (
                                     <>
-                                      <tr className="text-center">
+                                      <tr className="text-center" key={index}>
                                         <td>
                                           <img
                                             crossOrigin="anonymous"
-                                            src={item.image_product}
+                                            src={item?.image_product}
                                             className="photo-table"
                                             alt=""
                                           />
                                         </td>
-                                        <td>{item.name_product}</td>
-                                        <td>{item.size}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.stock}</td>
-                                        <td>
-                                          <button className="btn btn-danger" onClick={() => handleDelivered(item.customer_id, item.seller_id)}>
-                                            Done
-                                          </button>
+                                        <td>{item?.name_product}</td>
+                                        <td>{item?.size}</td>
+                                        <td>{item?.price}</td>
+                                        <td>{item?.stock}</td>
+                                        <td>{item?.status}
                                         </td>
                                       </tr>
                                     </>
                                   );
-                                })}
+                                 })} 
                               </tbody>
                             </table>
                           </div>
@@ -519,12 +519,12 @@ const MyOrder = () => {
                     <li className="nav-item" role="presentation">
                       <button
                         className="nav-link"
-                        id="pills-contact-tab"
+                        id="pills-sent-tab"
                         data-bs-toggle="pill"
-                        data-bs-target="#pills-contact"
+                        data-bs-target="#pills-sent"
                         type="button"
                         role="tab"
-                        aria-controls="pills-contact"
+                        aria-controls="pills-sent"
                         aria-selected="false"
                       >
                         Sent
@@ -533,12 +533,12 @@ const MyOrder = () => {
                     <li className="nav-item" role="presentation">
                       <button
                         className="nav-link"
-                        id="pills-conmpleted-tab"
+                        id="pills-completed-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-completed"
                         type="button"
                         role="tab"
-                        aria-controls="pills-contact"
+                        aria-controls="pills-completed"
                         aria-selected="false"
                       >
                         Completed
@@ -643,24 +643,25 @@ const MyOrder = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {order.map((item) => {
+                                {paidOrders?.map((item,index) => {
                                   return (
-                                    <>
-                                      <tr className="text-center">
+                                    
+                                      <tr className="text-center" key={index}>
                                         <td>
                                           <img
                                             crossOrigin="anonymous"
-                                            src={item.image_product}
+                                            src={item?.image_product}
                                             className="photo-table"
                                             alt=""
                                           />
                                         </td>
-                                        <td>{item.name_product}</td>
-                                        <td>{item.size}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.stock}</td>
+                                        <td>{item?.name_product}</td>
+                                        <td>{item?.size}</td>
+                                        <td>{item?.price}</td>
+                                        <td>{item?.quantity}</td>
+                                        <td>{item?.status}</td>
                                       </tr>
-                                    </>
+                                    
                                   );
                                 })}
                               </tbody>
@@ -703,9 +704,9 @@ const MyOrder = () => {
                     {/* Sent */}
                     <div
                       className="tab-pane fade"
-                      id="pills-contact"
+                      id="pills-sent"
                       role="tabpanel"
-                      aria-labelledby="pills-contact-tab"
+                      aria-labelledby="pills-sent-tab"
                       tabindex="0"
                     >
                       <div className="container pt-3">
@@ -722,7 +723,31 @@ const MyOrder = () => {
                                   <th scope="col">Action</th>
                                 </tr>
                               </thead>
-                              <tbody></tbody>
+                              <tbody>
+                              {onDeliveryOrders?.map((item,index) => {
+                                  return (
+                                    
+                                      <tr className="text-center" key={index}>
+                                        <td>
+                                          <img
+                                            crossOrigin="anonymous"
+                                            src={item?.image_product}
+                                            className="photo-table"
+                                            alt=""
+                                          />
+                                        </td>
+                                        <td>{item?.name_product}</td>
+                                        <td>{item?.size}</td>
+                                        <td>{item?.price}</td>
+                                        <td>{item?.quantity}</td>
+                                        <button type="button" class="btn btn-warning" onClick={() => handleDelivered (item?.customer_id)}>
+                                           {item?.status}
+                                          </button>
+                                        
+                                      </tr>
+                                  );
+                                })}
+                              </tbody>
                             </table>
                           </div>
                         </div>
@@ -731,9 +756,9 @@ const MyOrder = () => {
                     {/* Completed */}
                     <div
                       className="tab-pane fade"
-                      id="pills-contact"
+                      id="pills-completed"
                       role="tabpanel"
-                      aria-labelledby="pills-contact-tab"
+                      aria-labelledby="pills-completed-tab"
                       tabindex="0"
                     >
                       <div className="container pt-3">
@@ -750,7 +775,29 @@ const MyOrder = () => {
                                   <th scope="col">Action</th>
                                 </tr>
                               </thead>
-                              <tbody></tbody>
+                              <tbody>
+                              {deliveredOrders?.map((item,index) => {
+                                  return (
+                                    
+                                      <tr className="text-center" key={index}>
+                                        <td>
+                                          <img
+                                            crossOrigin="anonymous"
+                                            src={item?.image_product}
+                                            className="photo-table"
+                                            alt=""
+                                          />
+                                        </td>
+                                        <td>{item?.name_product}</td>
+                                        <td>{item?.size}</td>
+                                        <td>{item?.price}</td>
+                                        <td>{item?.quantity}</td>
+                                        <td>{item?.status}</td>
+                                      </tr>
+                                    
+                                  );
+                                })}
+                              </tbody>
                             </table>
                           </div>
                         </div>

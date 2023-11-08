@@ -114,11 +114,11 @@ function Home() {
                     </div>
                   )
                 ) : (
-                  Array.from({ length: 5 }).map((_, index) => (
+                  Array?.from({ length: 5 })?.map((_, index) => (
                     <div className="col" key={index}>
                       <div className="ProductCard">
                         <div className="card-body">
-                          {Array.from({ length: 2 }).map((_, index) => (
+                          {Array?.from({ length: 2 })?.map((_, index) => (
                             <h5
                               className="product-title card-title"
                               key={index}
@@ -133,7 +133,7 @@ function Home() {
             </div>
             <div className="pagination ">
               <div className="container text-center">
-                {Array.from({ length: totalPageNew }, (_, index) => (
+                {Array?.from({ length: totalPageNew }, (_, index) => (
                   <button
                     key={index}
                     onClick={() => handlePageChangeNew(index + 1)}
@@ -196,7 +196,7 @@ function Home() {
             </div>
             <div className="pagination2 ">
               <div className="container text-center">
-                {Array.from({ length: totalPagePopular }, (_, index) => (
+                {Array?.from({ length: totalPagePopular }, (_, index) => (
                   <button
                     key={index}
                     onClick={() => handlePageChangePopular(index + 1)}

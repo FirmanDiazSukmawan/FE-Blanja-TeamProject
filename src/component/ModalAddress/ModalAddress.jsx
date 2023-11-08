@@ -2,12 +2,70 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import style from "./address.module.css";
+import axios from "axios";
+import { url } from "../../redux/baseUrl/url";
 
 function ModalAddress(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const user_id = localStorage.getItem("userId")
+  const [addres,setAddres] = useState([])
+  const [loading,setLoading] = useState(false);
+
+  const [data,setData] = useState({
+    home_addres:"",
+    recipients_name:"",
+    phone:"",
+    addres:"",
+    postal_code:"",
+    city:"",
+    users_id:user_id,
+  })
+  console.log(data)
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    
+    setData({
+      ...data,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
+    try{
+      const response = await axios.post(`${url}/addres`,data)
+      console.log(response)
+      handleClose()
+
+      setTimeout(() => {
+        window.location.reload()
+      }, 1500);
+      // getData()
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+
+//   const getData = async () => {
+//     try{
+//     const res = await axios.get(`${url}/addres`)
+//     setAddres(res.data.data)
+//     console.log(res.data.data)
+//     setLoading(false)
+//   }
+//   catch(err){
+//     console.log(err)
+//     setLoading(true)
+//   }
+// }
+  
 
   return (
     <>
@@ -39,6 +97,9 @@ function ModalAddress(props) {
                   className="form-control"
                   id="exampleFormControlInput1"
                   placeholder="Rumah"
+                  name="home_addres"
+                  value={data?.home_addres}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -54,6 +115,9 @@ function ModalAddress(props) {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
+                  name="recipients_name"
+                  value={data?.recipients_name}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-sm-12 col-lg-6">
@@ -67,6 +131,9 @@ function ModalAddress(props) {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
+                  name="phone"
+                  value={data?.phone}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -82,6 +149,9 @@ function ModalAddress(props) {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
+                  name="addres"
+                  value={data?.addres}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-sm-12 col-lg-6">
@@ -95,6 +165,9 @@ function ModalAddress(props) {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
+                  name="postal_code"
+                  value={data?.postal_code}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -110,6 +183,9 @@ function ModalAddress(props) {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
+                  name="city"
+                  value={data?.city}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -136,7 +212,7 @@ function ModalAddress(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleCreate}>
             Save Changes
           </Button>
         </Modal.Footer>

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./shipping.module.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ModalAddress from "../ModalAddress/ModalAddress";
+import axios from "axios";
+import { url } from "../../redux/baseUrl/url";
 
 function ModalShipping(props) {
   const [show, setShow] = useState(false);
@@ -10,8 +12,24 @@ function ModalShipping(props) {
   const handleClose = () => {setShow(false);
   };
   const handleShow = () => setShow(true);
+  const users_id = localStorage.getItem("userId")
+  console.log(users_id)
 
+  const [data,setData] = useState([])
+
+  useEffect(()=> {
+  try{
+    const getData = async () => {
+    const res = await axios.get(`${url}/addres/users/${users_id}`)
+    setData(res.data.data)
+  }
+  getData()
+  }
+  catch(err){
+    console.log(err);
+  }
   
+  },[users_id])
 
   return (
     <>
@@ -33,20 +51,22 @@ function ModalShipping(props) {
             <ModalAddress modalName ="Add Another Address"/>
             </div>
             <div className="row mt-3">
-              <div className="card">
+              {data?.map((item,index)=>(
+              <div className="card mb-3" key={index}>
                 <div className="card-body">
-                  <h5>Andreas Jane</h5>
+                <h5>{item?.recipients_name}</h5>
                   <p>
-                    <span>Perumahan Sapphire Mediterania, </span>
-                    <span>Wiradadi, Kec. Sokaraja, </span>
-                    <span>Kabupaten Banyumas, Jawa Tengah </span>
-                    <span>53181</span>
+                    <span>{item?.addres} </span>
+                    <span>{item?.home_addres} </span>
+                    <span>{item?.city} </span>
+                    <span>{item?.postal_code}</span>
                   </p>
                   <button type="button" class="btn btn-link" id={style.button}>
                     Change Address
                   </button>
                 </div>
               </div>
+              ))}
             </div>
           </div>
         </Modal.Body>

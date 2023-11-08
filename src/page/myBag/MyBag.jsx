@@ -31,7 +31,8 @@ const MyBag = () => {
       });
   }, [users_id]);
 
-  const handleCheckout = () => {
+  const handleCheckout = (order_id) => {
+    console.log(order_id)
     axios
       .patch(`${url}/order/status/${users_id}`)
       .then((res) => {
@@ -78,6 +79,8 @@ const MyBag = () => {
       console.log(err);
     }
   };
+  
+  // console.log(data)
 
   return (
     <>
@@ -115,8 +118,8 @@ const MyBag = () => {
               {/* end card shipping address */}
 
               {/* card another product 1 */}
-              {data?.map((item) => (
-                <div className="card mt-3 cardOrder" key={item.order_id}>
+              {data?.map((item,index) => (
+                <div className="card mt-3 cardOrder" key={index}>
                   <div
                     style={{
                       display: "flex",
@@ -128,19 +131,19 @@ const MyBag = () => {
                     <div className="ml-5 wrapImage">
                       <img
                         style={{ width: 70, height: 70, objectFit: "cover" }}
-                        src={item.image_product}
+                        src={item?.image_product}
                         alt="Gambar 1"
                       />
                     </div>
                     <div className="row ml-2 wrap ">
                       <div className="font-weight-bold wrapTitle">
-                        {item.name_product}
+                        {item?.name_product}
                       </div>
                       <span className="text-secondary wrapTitle">
-                        {item.order_size}
+                        {item?.order_size}
                       </span>
                       <span className="text-secondary wrapTitle">
-                        {item.order_color}
+                        {item?.order_color}
                       </span>
                     </div>
 
@@ -151,12 +154,12 @@ const MyBag = () => {
                       {new Intl.NumberFormat("id-ID", {
                         style: "currency",
                         currency: "IDR",
-                      }).format(item.price * item.quantity)}
+                      }).format(item?.price * item?.quantity)}
                     </div>
                     <button
                       className="btn btn-danger"
                       type="button"
-                      onClick={() => handleDelete(item.order_id)}
+                      onClick={() => handleDelete(item?.order_id)}
                     >
                       <i class="bi bi-trash"></i>
                     </button>
@@ -171,7 +174,8 @@ const MyBag = () => {
           </div>
           <div className="col-lg-4">
             <div className="card mb-5" id={style.card}>
-              <div className="card-body">
+              {data?.map((item,index)=>(
+              <div className="card-body" key={index}>
                 <h3>Shopping Summary</h3>
                 <div className="row">
                   <div className="col-6">
@@ -196,13 +200,14 @@ const MyBag = () => {
                     <button
                       type="button"
                       class="btn btn-danger"
-                      onClick={handleCheckout}
+                      onClick={()=>handleCheckout(item.order_id)}
                     >
                       CheckOut
                     </button>
                   </div>
                 </div>
               </div>
+              ))}
             </div>
           </div>
         </div>

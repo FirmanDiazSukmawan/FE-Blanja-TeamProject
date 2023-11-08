@@ -241,8 +241,8 @@ const DetailProduct = () => {
                     onChange={handleSizeChange}
                   >
                     {products?.size?.split(",").map((size, index) => (
-                      <option key={index} value={size.trim()}>
-                        {size.trim()}
+                      <option key={index} value={size?.trim()}>
+                        {size?.trim()}
                       </option>
                     ))}
                   </select>
@@ -357,7 +357,7 @@ const DetailProduct = () => {
                     title={newProduct?.name_product}
                     price={newProduct?.price}
                     store_name={newProduct?.store_name}
-                    rating={newProduct.score}
+                    rating={newProduct?.score}
                   />
                 </div>
               ))
@@ -367,11 +367,11 @@ const DetailProduct = () => {
               </div>
             )
           ) : (
-            Array.from({ length: 5 }).map((_, index) => (
+            Array?.from({ length: 5 })?.map((_, index) => (
               <div className="col" key={index}>
                 <div className="ProductCard">
                   <div className="card-body">
-                    {Array.from({ length: 2 }).map((_, index) => (
+                    {Array?.from({ length: 2 })?.map((_, index) => (
                       <h5 className="product-title card-title">No PRODUCT</h5>
                     ))}
                   </div>
@@ -382,7 +382,7 @@ const DetailProduct = () => {
         </div>
         <div className="pagination ">
           <div className="container text-center">
-            {Array.from({ length: totalPageNew }, (_, index) => (
+            {Array?.from({ length: totalPageNew }, (_, index) => (
               <button
                 key={index}
                 onClick={() => handlePageChangeNew(index + 1)}
