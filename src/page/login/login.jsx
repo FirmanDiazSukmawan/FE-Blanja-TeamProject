@@ -34,7 +34,7 @@ function Login() {
        
       // console.log(res.data.data)
     } catch (err) {
-      console.error(err)
+      console.error(err.response)
       if (err) {
         setErrmsg(err.response.data.message);
         Swal.fire({

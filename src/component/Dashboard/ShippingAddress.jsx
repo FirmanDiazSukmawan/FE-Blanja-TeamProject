@@ -12,6 +12,10 @@ const [data,setData]=useState([])
 const users_id = localStorage.getItem("userId")
 const [loading,setLoading] = useState(false)
 
+const addres_id = data?.[0]?.addres_id
+
+console.log(addres_id)
+
 useEffect(()=>{
   const getAddres = async() => {
   try{
@@ -27,8 +31,22 @@ useEffect(()=>{
 }
 getAddres()
 },[users_id])
+
+const handleDeleteAddres = async() => {
+  try {
+    await axios.delete(`${url}/addres/${addres_id}`)
+    
+   setTimeout(() => {
+    window.location.reload()
+   }, 1000);
+  } catch (error) {
+    console.log(error)
+    
+  }
   
-console.log(data)
+}
+  
+// console.log(data)
   return (
     <>
       <section id="sidebar">
@@ -57,9 +75,12 @@ console.log(data)
                     <span>{item?.home_addres} </span>
                     <span>{item?.city} </span>
                     <span>{item?.postal_code}</span>
+                    <button style={{position:"absolute",right:15,top:"40%"}} onClick={handleDeleteAddres}> <i className="bi bi-trash" style={{fontSize:15}}></i></button>
                   </p>
                   <Link>Change Address</Link>
+                  
                 </div>
+                
                 ))}
               </div>
             </div>

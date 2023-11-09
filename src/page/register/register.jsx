@@ -132,13 +132,13 @@ function Register() {
               </div>
               <div className="mb-3">
                 <label
-                  htmlFor="exampleInputPassword1"
+                  htmlFor="exampleInputPassword"
                   className="form-label"
                 ></label>
                 <input
                   type="password"
                   className="form-control  form-control-lg"
-                  id="exampleInputPassword1"
+                  id="exampleInputPassword"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />

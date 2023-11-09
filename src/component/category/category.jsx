@@ -33,19 +33,18 @@ function Category() {
 
   const navigate = useNavigate()
   const [category,setCategory] = useState([])
-  const [loading,setLoading] = useState(false)
+  const [loading,setLoading] = useState(true)
   useEffect(() => {
+    setLoading(true); // Set loading true ketika permintaan pertama dimulai
     axios
       .get(`${url}/category`)
-
       .then((res) => {
-        setCategory(res.data.data);
-        setLoading(false)
-        // console.log(res.data.data);
+        setCategory(res?.data?.data);
+        setLoading(false); // Set loading false setelah data diterima
       })
       .catch((err) => {
         console.log(err);
-        setLoading(true)
+        setLoading(false); // Set loading false jika ada kesalahan
       });
   }, []);
 
@@ -71,32 +70,31 @@ function Category() {
       </div>
       <div className="row">
         <div className="container">
+          {loading && <p>Loading...</p>} 
           <Carousel
             responsive={responsive}
             infinite={true}
             centerMode={false}
             itemClass="style-item"
           >
-            
-            {loading?"loading.." :category?.map((item,index) => (
-    <div
-      className="item"
-      key={index}
-      style={{ backgroundColor: getRandomColor() }}
-    >
-      <Link to={`/category/${item.category_id}`} style={{ textDecoration: "none" }}>
-        <div
-          className="img-item"
-          style={{
-            backgroundImage: `url('${item?.image}')`,
-          }}
-        >
-          <h2 className="title-item text-white">{item?.name_category}</h2>
-        </div>
-      </Link>
-    </div>
-  ))}
-
+            {category?.map((item, index) => (
+              <div
+                className="item"
+                key={index}
+                style={{ backgroundColor: getRandomColor() }}
+              >
+                <Link to={`/category/${item.category_id}`} style={{ textDecoration: "none" }}>
+                  <div
+                    className="img-item"
+                    style={{
+                      backgroundImage: `url('${item?.image}')`,
+                    }}
+                  >
+                    <h2 className="title-item text-white">{item?.name_category}</h2>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </Carousel>
         </div>
       </div>

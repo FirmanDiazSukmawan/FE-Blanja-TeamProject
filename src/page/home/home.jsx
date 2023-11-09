@@ -14,8 +14,8 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
   const login = localStorage.getItem("token");
-  const navigate = useNavigate()
-  const [loadingNew, setLoadingNew] = useState(false);
+  const navigate = useNavigate();
+  const [loadingNew, setLoadingNew] = useState(true);
   const [newProductList, setNewProductList] = useState([]);
   const [currentPageNew, setCurrentPageNew] = useState(1);
   const [totalPageNew, setTotalPageNew] = useState(1);
@@ -30,12 +30,14 @@ function Home() {
     axios
       .get(`${url}/product/?page=${currentPageNew}&limit=15`)
       .then((response) => {
-        setTotalPageNew(response?.data.pagination.totalPage);
+        setTotalPageNew(response?.data?.pagination?.totalPage);
         setNewProductList(response?.data?.data);
+        setLoadingNew(false)
         // console.log(response)
       })
       .catch((err) => {
         console.log(err);
+        setLoadingNew(false);
       })
       .finally(() => {
         setLoadingNew(false);
@@ -49,9 +51,11 @@ function Home() {
       .then((response) => {
         setTotalPagePopular(response?.data?.pages?.total);
         setPopularProductList(response?.data?.data);
+        setLoadingPopular(false)
       })
       .catch((err) => {
         console.log(err);
+        setLoadingPopular(false)
       })
       .finally(() => {
         setLoadingPopular(false);
@@ -76,6 +80,7 @@ function Home() {
     <>
       {!login ? <Navbar /> : <NavbarLogin />}
       <div className="Home">
+        {loadingNew? "loading..." :
         <div className="row">
           <section id="carousel" className="container">
             <CarouselList />
@@ -94,38 +99,40 @@ function Home() {
               <div className="row row-cols-md-5 rows-cols-xs-2">
                 {/* <ProductCard /> */}
                 {!loadingNew ? (
-  newProductList?.length > 0 ? (
-    newProductList?.map((newProduct, index) => (
-      <div className="col" key={index}>
-        <ProductCard
-          product_id={newProduct?.product_id}
-          image={newProduct?.image_product}
-          title={newProduct?.name_product}
-          price={newProduct?.price}
-          store_name={newProduct?.store_name}
-          rating={newProduct.score}
-        />
-      </div>
-    ))
-  ) : (
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  )
-) : (
-  Array?.from({ length: 5 })?.map((_, index) => (
-    <div className="col" key={index}>
-      <div className="ProductCard">
-        <div className="card-body">
-          {Array?.from({ length: 2 })?.map((_, index) => (
-            <h5 className="product-title card-title" key={index}></h5>
-          ))}
-        </div>
-      </div>
-    </div>
-  ))
-)}
-
+                  newProductList?.length > 0 ? (
+                    newProductList?.map((newProduct, index) => (
+                      <div className="col" key={index}>
+                        <ProductCard
+                          product_id={newProduct?.product_id}
+                          image={newProduct?.image_product}
+                          title={newProduct?.name_product}
+                          price={newProduct?.price}
+                          store_name={newProduct?.store_name}
+                          rating={newProduct.score}
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  )
+                ) : (
+                  Array?.from({ length: 5 })?.map((_, index) => (
+                    <div className="col" key={index}>
+                      <div className="ProductCard">
+                        <div className="card-body">
+                          {Array?.from({ length: 2 })?.map((_, index) => (
+                            <h5
+                              className="product-title card-title"
+                              key={index}
+                            ></h5>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
             <div className="pagination ">
@@ -209,6 +216,7 @@ function Home() {
             </div>
           </section>
         </div>
+        }
       </div>
     </>
   );
