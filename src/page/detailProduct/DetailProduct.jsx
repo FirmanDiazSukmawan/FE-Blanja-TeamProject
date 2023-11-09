@@ -358,7 +358,7 @@ const DetailProduct = () => {
                     price={newProduct?.price}
                     store_name={newProduct?.store_name}
                     rating={newProduct?.score}
-                  />
+                  />a
                 </div>
               ))
             ) : (

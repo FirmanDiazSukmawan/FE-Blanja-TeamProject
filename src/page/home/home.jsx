@@ -94,41 +94,38 @@ function Home() {
               <div className="row row-cols-md-5 rows-cols-xs-2">
                 {/* <ProductCard /> */}
                 {!loadingNew ? (
-                  newProductList?.length > 0 ? (
-                    newProductList?.map((newProduct, index) => (
-                      <div className="col" key={index}>
-                        <ProductCard
-                          product_id={newProduct?.product_id}
-                          image={newProduct?.image_product}
-                          title={newProduct?.name_product}
-                          price={newProduct?.price}
-                          store_name={newProduct?.store_name
-                          }
-                          rating={newProduct.score}
-                        />
-                      </div>
-                    ))
-                  ) : (
-                    <div class="spinner-border text-primary" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                  )
-                ) : (
-                  Array?.from({ length: 5 })?.map((_, index) => (
-                    <div className="col" key={index}>
-                      <div className="ProductCard">
-                        <div className="card-body">
-                          {Array?.from({ length: 2 })?.map((_, index) => (
-                            <h5
-                              className="product-title card-title"
-                              key={index}
-                            ></h5>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                )}
+  newProductList?.length > 0 ? (
+    newProductList?.map((newProduct, index) => (
+      <div className="col" key={index}>
+        <ProductCard
+          product_id={newProduct?.product_id}
+          image={newProduct?.image_product}
+          title={newProduct?.name_product}
+          price={newProduct?.price}
+          store_name={newProduct?.store_name}
+          rating={newProduct.score}
+        />
+      </div>
+    ))
+  ) : (
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  )
+) : (
+  Array?.from({ length: 5 })?.map((_, index) => (
+    <div className="col" key={index}>
+      <div className="ProductCard">
+        <div className="card-body">
+          {Array?.from({ length: 2 })?.map((_, index) => (
+            <h5 className="product-title card-title" key={index}></h5>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))
+)}
+
               </div>
             </div>
             <div className="pagination ">

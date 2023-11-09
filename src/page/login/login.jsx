@@ -34,6 +34,7 @@ function Login() {
        
       // console.log(res.data.data)
     } catch (err) {
+      console.error(err)
       if (err) {
         setErrmsg(err.response.data.message);
         Swal.fire({
@@ -94,7 +95,7 @@ function Login() {
             id="noanim-tab-example"
             className="btn-group position-relative top-0 start-50 translate-middle mx-auto mt-3 d-flex justify-content-center align-items-center"
               role="group"
-              aria-label="Basic radio toggle button group"
+             
             >
               <Tab eventKey="Customer" title="Customer" style={style}>
                 <div className="container ">
@@ -109,13 +110,13 @@ function Login() {
                           }}
                         >
                           <label
-                            htmlFor="exampleInputEmail1"
+                            htmlFor="exampleInputEmail"
                             className="form-label"
                           ></label>
                           <input
                             type="email"
                             className="form-control form-control-lg"
-                            id="exampleInputEmail1"
+                            id="exampleInputEmail"
                             aria-describedby="emailHelp"
                             placeholder="Email"
                             onChange={(e) => setEmail(e.target.value)}
@@ -123,13 +124,13 @@ function Login() {
                         </div>
                         <div className="mb-3">
                           <label
-                            htmlFor="exampleInputPassword1"
+                            htmlFor="exampleInputPassword"
                             className="form-label"
                           ></label>
                           <input
                             type="password"
                             className="form-control  form-control-lg"
-                            id="exampleInputPassword1"
+                            id="exampleInputPassword"
                             placeholder="Password"
                             onChange={(e) => setPassword(e.target.value)}
                           />
@@ -226,7 +227,7 @@ function Login() {
             {/* <div
               className="btn-group position-relative top-0 start-50 translate-middle mx-auto mt-3"
               role="group"
-              aria-label="Basic radio toggle button group"
+             
             >
               <input
                 type="radio"

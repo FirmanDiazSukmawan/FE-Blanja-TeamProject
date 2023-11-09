@@ -94,7 +94,7 @@ function Register() {
             id="noanim-tab-example"
             className="btn-group position-relative top-0 start-50 translate-middle mx-auto mt-3 d-flex justify-content-center align-items-center"
               role="group"
-              aria-label="Basic radio toggle button group"
+             
           >
             <Tab eventKey="Customer" title="Customer" style={style} >
               <div className="container ">

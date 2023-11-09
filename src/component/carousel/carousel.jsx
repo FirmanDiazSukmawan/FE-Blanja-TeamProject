@@ -38,7 +38,7 @@ function CarouselList() {
           itemClass="style-item"
         >
           <div className="item">
-            <Link to={"#"} style={{ textDecoration: "none" }}>
+            <Link to="#" style={{ textDecoration: "none" }}>
               <div
                 className="img-item"
                 style={{
