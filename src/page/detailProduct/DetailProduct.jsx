@@ -143,10 +143,11 @@ const DetailProduct = () => {
         
         <div className="product mt-5">
           <div className="row">
-            <section className="col-lg-4">
+            {loading?("loading..."):(product?.map((item,index)=>(
+            <section className="col-lg-4" key={index}>
               <div className="model container ">
                 <img
-                  src={products?.image_product}
+                  src={item?.image_product}
                   className="rounded img-fluid"
                   alt=""
                   style={{ width: "30vh" }}
@@ -154,41 +155,43 @@ const DetailProduct = () => {
               </div>
               <div className="col-auto mt-4">
                 <img
-                  src={products?.image_product}
+                  src={item?.image_product}
                   className="rounded mx-2 img-fluid"
                   style={{ width: "65px" }}
                   alt=""
                 />
                 <img
-                  src={products?.image_product}
+                  src={item?.image_product}
                   className="rounded mx-2"
                   style={{ width: "65px" }}
                   alt=""
                 />
                 <img
-                  src={products?.image_product}
+                  src={item?.image_product}
                   className="rounded mx-2"
                   style={{ width: "65px" }}
                   alt=""
                 />
                 <img
-                  src={products?.image_product}
+                  src={item?.image_product}
                   className="rounded mx-2"
                   style={{ width: "65px" }}
                   alt=""
                 />
                 <img
-                  src={products?.image_product}
+                  src={item?.image_product}
                   className="rounded mx-2"
                   style={{ width: "65px" }}
                   alt=""
                 />
               </div>
             </section>
-            <section id="productPayment" className="col-lg-6">
+            )))}
+            {loading?"loading..." : product?.map((item,index)=>(
+            <section id="productPayment" className="col-lg-6" key={index}>
               <div className={style.productName}>
-                <h1>{products?.name_product}</h1>
-                <p>{products?.store_name}</p>
+                <h1>{item?.name_product}</h1>
+                <p>{item?.store_name}</p>
               </div>
               <div className="rating d-flex align-items-center ">
                 <AiFillStar color="#FFBA49" />
@@ -201,7 +204,7 @@ const DetailProduct = () => {
 
               <div className="mt-4" id={style.price}>
                 <p className="my-0">price</p>
-                <h1>{formatPrice(products?.price)}</h1>
+                <h1>{formatPrice(item?.price)}</h1>
               </div>
 
               <div className="mt-4 d-flex" id="amount">
@@ -221,7 +224,7 @@ const DetailProduct = () => {
                     value={selectedColor}
                     onChange={handleColorChange}
                   >
-                    {products?.color?.split(",").map((color, index) => (
+                    {item?.color?.split(",").map((color, index) => (
                       <option key={index} value={color.trim()}>
                         {color.trim()}
                       </option>
@@ -240,7 +243,7 @@ const DetailProduct = () => {
                     value={selectedSize}
                     onChange={handleSizeChange}
                   >
-                    {products?.size?.split(",").map((size, index) => (
+                    {item?.size?.split(",").map((size, index) => (
                       <option key={index} value={size?.trim()}>
                         {size?.trim()}
                       </option>
@@ -308,18 +311,20 @@ const DetailProduct = () => {
                 </button>
               </div>
             </section>
+            ))}
           </div>
         </div>
-        <div className="row mt-5 ">
+        {loading?"loading...":product?.map((item,index)=>(
+        <div className="row mt-5 " key={index}>
           <section id={style.information} className="col-lg-12">
             <h1>Informasi Produk</h1>
             <div className="mt-5" id={style.condition}>
               <h2>Condition</h2>
-              <h1>{products?.condition}</h1>
+              <h1>{item?.condition}</h1>
             </div>
             <div className="mt-5" id={style.description}>
               <h2>Description</h2>
-              <p>{products?.description}</p>
+              <p>{item?.description}</p>
             </div>
             <div className="mt-5" id={style.review}>
               <h1>Product Review</h1>
@@ -339,6 +344,7 @@ const DetailProduct = () => {
             </div>
           </section>
         </div>
+        ))}
         <div className="row mt-5">
           <div>
             <h1>You Can Also Like This</h1>
@@ -358,7 +364,7 @@ const DetailProduct = () => {
                     price={newProduct?.price}
                     store_name={newProduct?.store_name}
                     rating={newProduct?.score}
-                  />a
+                  />
                 </div>
               ))
             ) : (
