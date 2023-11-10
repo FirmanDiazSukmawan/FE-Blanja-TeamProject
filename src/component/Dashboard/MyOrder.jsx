@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import SidebarProfile from "../SidebarProfile/index";
 import NavbarLogin from "../navbarLogin/navbarLogin";
 import "../../asset/css/style.css";
@@ -8,7 +7,6 @@ import axios from "axios";
 import { url } from "../../redux/baseUrl/url";
 
 const MyOrder = () => {
-  const navigate = useNavigate();
   const [order, setOrder] = useState([]);
   const users_id = localStorage.getItem("userId");
   const role = localStorage.getItem("role");
@@ -80,7 +78,6 @@ const MyOrder = () => {
               <div className="container">
                 <div className="wrapper-card">
                   <h3 className="title mb-0">My Order</h3>
-                  {/* navpils */}
                   <ul
                     className="nav mb-3"
                     id="pills-tab-product"
