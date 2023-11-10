@@ -101,7 +101,48 @@ To use this project, follow these steps:
 
 ## Screenshots
 
-<!-- Add screenshots here -->
+<details>
+  <summary>
+    Login Seller
+  </summary>
+<img src="screenshots/sellerLogin.png" alt="Login Seller" />
+</details>
+
+<details>
+  <summary>
+    Register Seller
+  </summary>
+<img src="screenshots/sellerRegister.png" alt="Register Seller" />
+</details>
+
+<details>
+  <summary>
+    Login Customer
+  </summary>
+<img src="screenshots/customerLogin.png" alt="Login Customer" />
+</details>
+
+<details>
+  <summary>
+    Regiter Customer
+  </summary>
+<img src="screenshots/customerRegister.png" alt="Register Customer" />
+</details>
+
+<details>
+  <summary>
+    Detail Product
+  </summary>
+<img src="screenshots/DetailProduct.jpg" alt="Detail Product" />
+</details>
+
+<details>
+  <summary>
+    My Bag
+  </summary>
+<img src="screenshots/MyBag.jpg" alt="My Bag" />
+</details>
+
 
 ## Authors
 
