@@ -128,21 +128,60 @@ To use this project, follow these steps:
   </summary>
 <img src="screenshots/customerRegister.png" alt="Register Customer" />
 </details>
-
+<details>
+  <summary>
+    Landing Page
+  </summary>
+<img src="screenshots/LandingPage.png" alt="Register Customer" />
+</details>
 <details>
   <summary>
     Detail Product
   </summary>
-<img src="screenshots/DetailProduct.jpg" alt="Detail Product" />
+<img src="screenshots/DetailProduct.png" alt="Detail Product" />
 </details>
-
 <details>
   <summary>
     My Bag
   </summary>
-<img src="screenshots/MyBag.jpg" alt="My Bag" />
+<img src="screenshots/MyBag.png" alt="My Bag" />
 </details>
-
+<details>
+  <summary>
+    Profile Seller
+  </summary>
+<img src="screenshots/profileSeller.png" alt="Profile Seller" />
+</details>
+<details>
+  <summary>
+    Seller My Product Section
+  </summary>
+<img src="screenshots/sellerMyProduct.png" alt="Seller Product" />
+</details>
+<details>
+  <summary>
+    Seller List Order Section
+  </summary>
+<img src="screenshots/sellerListOrder.png" alt="List Order" />
+</details>
+<details>
+  <summary>
+    Profile Customer
+  </summary>
+<img src="screenshots/profileCustomer.png" alt="Profile Customer" />
+</details>
+<details>
+  <summary>
+    Customer Shipping Address Section
+  </summary>
+<img src="screenshots/profileShippingAddress.png" alt="Shipping Adress" />
+</details>
+<details>
+  <summary>
+    Customer My Order Section
+  </summary>
+<img src="screenshots/profileMyOrder.png" alt="My Order" />
+</details>
 
 ## Authors
 
