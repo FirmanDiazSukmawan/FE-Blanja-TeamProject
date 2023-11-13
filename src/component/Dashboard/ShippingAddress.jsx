@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import SidebarProfile from "../SidebarProfile/index";
 import NavbarLogin from "../navbarLogin/navbarLogin";
 import "../../asset/css/style.css";
@@ -8,15 +8,15 @@ import axios from "axios";
 import { url } from "../../redux/baseUrl/url";
 
 const MyOrder = () => {
-const [data,setData]=useState([])
+const [data,setData]= React.useState([])
 const users_id = localStorage.getItem("userId")
-const [loading,setLoading] = useState(false)
+const [loading,setLoading] = React.useState(false)
 
 const addres_id = data?.[0]?.addres_id
 
 console.log(addres_id)
 
-useEffect(()=>{
+React.useEffect(()=>{
   const getAddres = async() => {
   try{
   const res = await axios.get(`${url}/addres/users/${users_id}`)
