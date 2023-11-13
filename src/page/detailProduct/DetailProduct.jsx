@@ -121,7 +121,7 @@ const DetailProduct = () => {
   return (
     <>
       <NavbarLogin />
-      
+{loadingNew?("loading..."):(
       <div className="container mt-5">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
@@ -145,7 +145,7 @@ const DetailProduct = () => {
           <div className="row">
             {loading?("loading..."):(product?.map((item,index)=>(
             <section className="col-lg-4" key={index}>
-              <div className="model container ">
+              <div className="model container " key={index}>
                 <img
                   src={item?.image_product}
                   className="rounded img-fluid"
@@ -403,7 +403,7 @@ const DetailProduct = () => {
           </div>
         </div>
       </div>
-
+      )}
     </>
   );
 };

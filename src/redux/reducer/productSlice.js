@@ -65,7 +65,7 @@ export const createProduct = createAsyncThunk(
 
       const response = await axios.post(`${url}/product`, formDataToSend);
       Swal.fire({
-        tittle: "Create Success",
+        title: "Create Success",
         text: "Create Product Success",
         icon: "success",
       });
@@ -75,13 +75,13 @@ export const createProduct = createAsyncThunk(
       return response.data;
     } catch (error) {
       Swal.fire({
-        tittle: "Create failed",
+        title: "Create failed",
         text: "please,input data",
         icon: "error",
       });
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 500);
       throw error;
     }
   }

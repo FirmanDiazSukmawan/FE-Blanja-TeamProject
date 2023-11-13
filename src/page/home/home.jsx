@@ -47,9 +47,9 @@ function Home() {
   useEffect(() => {
     setLoadingPopular(true);
     axios
-      .get(`${url}/product?page=${currentPagePopular}&by=review`)
+      .get(`${url}/product?page=${currentPagePopular}&limit=15&sort=DESC`)
       .then((response) => {
-        setTotalPagePopular(response?.data?.pages?.total);
+        setTotalPagePopular(response?.data?.pagination?.totalPage);
         setPopularProductList(response?.data?.data);
         setLoadingPopular(false)
       })
@@ -61,6 +61,8 @@ function Home() {
         setLoadingPopular(false);
       });
   }, [currentPagePopular]);
+
+  console.log(popularProductList)
 
   const handlePageChangeNew = (newPage) => {
     setCurrentPageNew(newPage);
@@ -162,18 +164,17 @@ function Home() {
                 </p>
               </div>
               <div className="row row-cols-md-5 rows-cols-xs-2">
-                <ProductCard />
-                {/* {!loadingPopular ? (
+                {!loadingPopular ? (
                 popularProductList?.length > 0 ? (
-                  popularProductList.slice(0, 10).map((newProduct) => (
-                    <div className="col" key={newProduct?.product_id}>
+                  popularProductList?.slice(0, 10).map((newProduct,i) => (
+                    <div className="col" key={i}>
                       <ProductCard
-                        productId={newProduct?.product_id}
-                        image={newProduct?.path}
-                        title={newProduct?.product_name}
-                        price={newProduct?.product_price}
-                        storeName={newProduct?.product_category}
-                        rating={newProduct.score}
+                         product_id={newProduct?.product_id}
+                         image={newProduct?.image_product}
+                         title={newProduct?.name_product}
+                         price={newProduct?.price}
+                         store_name={newProduct?.store_name}
+                         rating={newProduct.score}
                       />
                     </div>
                   ))
@@ -183,11 +184,11 @@ function Home() {
                   </div>
                 )
               ) : (
-                Array.from({ length: 5 }).map((_, index) => (
+                Array?.from({ length: 5 })?.map((_, index) => (
                   <div className="col" key={index}>
                     <div className="ProductCard">
                       <div className="card-body">
-                        {Array.from({ length: 2 }).map((_, index) => (
+                        {Array?.from({ length: 2 })?.map((_, index) => (
                           <h5 className="product-title card-title" key={index}>
                           </h5>
                         ))}
@@ -195,7 +196,7 @@ function Home() {
                     </div>
                   </div>
                 ))
-              )} */}
+              )}
               </div>
             </div>
             <div className="pagination2 ">
