@@ -21,7 +21,7 @@ const DetailProduct = () => {
   const product = useSelector(productSelector);
   const loading = useSelector(loadingSelector);
   const products = product?.[0];
-  console.log(products);
+  // console.log(products);
   const navigate = useNavigate();
   const [loadingNew, setLoadingNew] = useState(false);
   const [newProductList, setNewProductList] = useState([]);

@@ -69,9 +69,9 @@ export const createProduct = createAsyncThunk(
         text: "Create Product Success",
         icon: "success",
       });
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
       return response.data;
     } catch (error) {
       Swal.fire({

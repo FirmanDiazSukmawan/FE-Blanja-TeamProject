@@ -26,7 +26,7 @@ const SellingProduct = () => {
     size:"",
     stock:"",
     condition:"",
-    image_product:"",
+    image_product:saveImage,
     description:"",
     users_id:users_id,
     category_id:selectedCategoryId
