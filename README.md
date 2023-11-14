@@ -3,6 +3,7 @@
 Blanja is an E-commerce website developed as part of a group assignment with a team of 4 members.
 
 ## Table of Contents
+
 - [Description](#description)
 - [Project Structure](#project-structure)
 - [Screenshots](#screenshots)
@@ -20,16 +21,24 @@ Blanja E-commerce Website is a platform where users can buy and sell various pro
 ## Project Structure
 
 ```html
-|── Frontend
-   |── public          <!-- Public assets -->
-   |── src             <!-- Project source code -->
-       |── assets      <!-- Images used by multer -->
-       |── components  <!-- Layouts -->
-       |── pages       <!-- Pages -->
-       |── redux       <!-- State management -->
-       |── router      <!-- Endpoints -->
-   |── .gitignore      <!-- List of files to be ignored by Git -->
-   |── README.md       <!-- Project documentation for GitHub -->
+|── Frontend |── public
+<!-- Public assets -->
+|── src
+<!-- Project source code -->
+|── assets
+<!-- Images used by multer -->
+|── components
+<!-- Layouts -->
+|── pages
+<!-- Pages -->
+|── redux
+<!-- State management -->
+|── router
+<!-- Endpoints -->
+|── .gitignore
+<!-- List of files to be ignored by Git -->
+|── README.md
+<!-- Project documentation for GitHub -->
 ```
 
 ## Framework
@@ -73,25 +82,30 @@ Blanja E-commerce Website is a platform where users can buy and sell various pro
 To use this project, follow these steps:
 
 1. **Clone This Repository**
+
    ```bash
    git clone https://github.com/xTats/FE-Blanja-TeamProject
    ```
 
 2. **Install Dependencies**
+
    ```bash
    cd FE-Blanja-TeamProject
    npm install
    ```
 
 3. **Set Up Database**
+
    - Create a PostgreSQL database and note down the database name, username, password, and host.
 
 4. **Run the Backend Server**
+
    ```bash
    npm start
    ```
 
 5. **Start Development Server**
+
    ```bash
    npm run start
    ```
@@ -128,21 +142,73 @@ To use this project, follow these steps:
   </summary>
 <img src="screenshots/customerRegister.png" alt="Register Customer" />
 </details>
-
+<details>
+  <summary>
+    Landing Page
+  </summary>
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/9d2074b7-5ef0-440e-98a3-a0a44f252232" alt="Register Customer" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/c079756b-7f54-440e-b0d4-14ed97175656" alt="Register Customer" />
+</details>
 <details>
   <summary>
     Detail Product
   </summary>
-<img src="screenshots/DetailProduct.jpg" alt="Detail Product" />
+<img src="screenshots/DetailProduct.png" alt="Detail Product" />
 </details>
-
 <details>
   <summary>
     My Bag
   </summary>
-<img src="screenshots/MyBag.jpg" alt="My Bag" />
+<img src="screenshots/newMyBag.jpg" alt="My Bag" />
 </details>
-
+<details>
+  <summary>
+    Checkout
+  </summary>
+<img src="screenshots/checkout.jpg" alt="Checkout" />
+</details>
+<details>
+  <summary>
+    Profile Seller
+  </summary>
+<img src="screenshots/profileSeller.png" alt="Profile Seller" />
+</details>
+<details>
+  <summary>
+    Seller Edit Profile
+  </summary>
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/c14cda29-11be-4586-88ac-bf702475266e" alt="Profile Seller" />
+</details>
+<details>
+  <summary>
+    Seller My Product Section
+  </summary>
+<img src="screenshots/sellerMyProduct.jpg" alt="Seller Product" />
+</details>
+<details>
+  <summary>
+    Seller List Order Section
+  </summary>
+<img src="screenshots/sellerListOrder.jpg" alt="List Order" />
+</details>
+<details>
+  <summary>
+    Profile Customer
+  </summary>
+<img src="screenshots/profileCustomer.jpg" alt="Profile Customer" />
+</details>
+<details>
+  <summary>
+    Customer Shipping Address Section
+  </summary>
+<img src="screenshots/newProfileShipping.jpg" alt="Shipping Adress" />
+</details>
+<details>
+  <summary>
+    Customer My Order Section
+  </summary>
+<img src="screenshots/customerMyOrder.jpg" alt="My Order" />
+</details>
 
 ## Authors
 
