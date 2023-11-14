@@ -146,7 +146,8 @@ To use this project, follow these steps:
   <summary>
     Landing Page
   </summary>
-<img src="screenshots/newLandingPage.jpg" alt="Register Customer" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/9d2074b7-5ef0-440e-98a3-a0a44f252232" alt="Register Customer" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/9d2074b7-5ef0-440e-98a3-a0a44f252232" alt="Register Customer" />
 </details>
 <details>
   <summary>
