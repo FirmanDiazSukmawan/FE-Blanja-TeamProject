@@ -159,13 +159,13 @@ To use this project, follow these steps:
   <summary>
     My Bag
   </summary>
-<img src="screenshots/newMyBag.jpg" alt="My Bag" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/d990c2aa-a311-49ee-a81a-a804215c08d8" alt="My Bag" />
 </details>
 <details>
   <summary>
     Checkout
   </summary>
-<img src="screenshots/checkout.jpg" alt="Checkout" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/035dab8f-b426-4255-b29e-81c99ae1d560" alt="Checkout" />
 </details>
 <details>
   <summary>
