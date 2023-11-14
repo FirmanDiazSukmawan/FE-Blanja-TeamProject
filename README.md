@@ -3,6 +3,7 @@
 Blanja is an E-commerce website developed as part of a group assignment with a team of 4 members.
 
 ## Table of Contents
+
 - [Description](#description)
 - [Project Structure](#project-structure)
 - [Screenshots](#screenshots)
@@ -20,16 +21,24 @@ Blanja E-commerce Website is a platform where users can buy and sell various pro
 ## Project Structure
 
 ```html
-|── Frontend
-   |── public          <!-- Public assets -->
-   |── src             <!-- Project source code -->
-       |── assets      <!-- Images used by multer -->
-       |── components  <!-- Layouts -->
-       |── pages       <!-- Pages -->
-       |── redux       <!-- State management -->
-       |── router      <!-- Endpoints -->
-   |── .gitignore      <!-- List of files to be ignored by Git -->
-   |── README.md       <!-- Project documentation for GitHub -->
+|── Frontend |── public
+<!-- Public assets -->
+|── src
+<!-- Project source code -->
+|── assets
+<!-- Images used by multer -->
+|── components
+<!-- Layouts -->
+|── pages
+<!-- Pages -->
+|── redux
+<!-- State management -->
+|── router
+<!-- Endpoints -->
+|── .gitignore
+<!-- List of files to be ignored by Git -->
+|── README.md
+<!-- Project documentation for GitHub -->
 ```
 
 ## Framework
@@ -73,25 +82,30 @@ Blanja E-commerce Website is a platform where users can buy and sell various pro
 To use this project, follow these steps:
 
 1. **Clone This Repository**
+
    ```bash
    git clone https://github.com/xTats/FE-Blanja-TeamProject
    ```
 
 2. **Install Dependencies**
+
    ```bash
    cd FE-Blanja-TeamProject
    npm install
    ```
 
 3. **Set Up Database**
+
    - Create a PostgreSQL database and note down the database name, username, password, and host.
 
 4. **Run the Backend Server**
+
    ```bash
    npm start
    ```
 
 5. **Start Development Server**
+
    ```bash
    npm run start
    ```
@@ -132,7 +146,7 @@ To use this project, follow these steps:
   <summary>
     Landing Page
   </summary>
-<img src="screenshots/LandingPage.png" alt="Register Customer" />
+<img src="screenshots/newLandingPage.jpg" alt="Register Customer" />
 </details>
 <details>
   <summary>
@@ -144,7 +158,13 @@ To use this project, follow these steps:
   <summary>
     My Bag
   </summary>
-<img src="screenshots/MyBag.png" alt="My Bag" />
+<img src="screenshots/newMyBag.jpg" alt="My Bag" />
+</details>
+<details>
+  <summary>
+    Checkout
+  </summary>
+<img src="screenshots/checkout.jpg" alt="Checkout" />
 </details>
 <details>
   <summary>
@@ -154,33 +174,39 @@ To use this project, follow these steps:
 </details>
 <details>
   <summary>
+    Seller Edit Profile
+  </summary>
+<img src="screenshots/profileEditSeller.jpg" alt="Profile Seller" />
+</details>
+<details>
+  <summary>
     Seller My Product Section
   </summary>
-<img src="screenshots/sellerMyProduct.png" alt="Seller Product" />
+<img src="screenshots/sellerMyProduct.jpg" alt="Seller Product" />
 </details>
 <details>
   <summary>
     Seller List Order Section
   </summary>
-<img src="screenshots/sellerListOrder.png" alt="List Order" />
+<img src="screenshots/sellerListOrder.jpg" alt="List Order" />
 </details>
 <details>
   <summary>
     Profile Customer
   </summary>
-<img src="screenshots/profileCustomer.png" alt="Profile Customer" />
+<img src="screenshots/profileCustomer.jpg" alt="Profile Customer" />
 </details>
 <details>
   <summary>
     Customer Shipping Address Section
   </summary>
-<img src="screenshots/profileShippingAddress.png" alt="Shipping Adress" />
+<img src="screenshots/newProfileShipping.jpg" alt="Shipping Adress" />
 </details>
 <details>
   <summary>
     Customer My Order Section
   </summary>
-<img src="screenshots/profileMyOrder.png" alt="My Order" />
+<img src="screenshots/newProfileMyOrder.jpg" alt="My Order" />
 </details>
 
 ## Authors
