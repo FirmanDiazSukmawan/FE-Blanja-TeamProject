@@ -206,7 +206,7 @@ To use this project, follow these steps:
   <summary>
     Customer My Order Section
   </summary>
-<img src="screenshots/newProfileMyOrder.jpg" alt="My Order" />
+<img src="screenshots/customerMyOrder.jpg" alt="My Order" />
 </details>
 
 ## Authors
