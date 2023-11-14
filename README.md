@@ -165,7 +165,7 @@ To use this project, follow these steps:
   <summary>
     Checkout
   </summary>
-<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/035dab8f-b426-4255-b29e-81c99ae1d560" alt="Checkout" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/7cab129f-82d5-49ff-bbde-8dda9ccb7bbf" alt="Checkout" />
 </details>
 <details>
   <summary>
