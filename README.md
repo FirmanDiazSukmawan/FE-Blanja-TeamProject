@@ -177,7 +177,7 @@ To use this project, follow these steps:
   <summary>
     Seller Edit Profile
   </summary>
-<img src="screenshots/profileEditSeller.jpg" alt="Profile Seller" />
+<img src="https://github.com/xTats/FE-Blanja-TeamProject/assets/122331956/c14cda29-11be-4586-88ac-bf702475266e" alt="Profile Seller" />
 </details>
 <details>
   <summary>
