@@ -194,7 +194,7 @@ To use this project, follow these steps:
   <summary>
     Profile Customer
   </summary>
-<img src="screenshots/profileCustomer.png" alt="Profile Customer" />
+<img src="screenshots/profileCustomer.jpg" alt="Profile Customer" />
 </details>
 <details>
   <summary>
