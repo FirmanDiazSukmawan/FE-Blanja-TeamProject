@@ -43,8 +43,21 @@ const Checkout = () => {
       console.log(err)
     })
   },[user_id])
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    order.forEach((item) => {
+      
+      totalPrice += item.price;
+    });
+
+    
+    totalPrice += 5000;
+
+    return totalPrice;
+  };
   
-  // console.log(order)
+  
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("id-ID", {
@@ -118,7 +131,8 @@ const Checkout = () => {
           </div>
           <div className="col-lg-4">
             <div className="card mb-5" id={style.card}>
-              <div className="card-body">
+              {order?.map((item,index)=>(
+              <div className="card-body"  >
                 <h3>Shopping Summary</h3>
                 <div className="row">
                   <div className="col-6">
@@ -126,8 +140,8 @@ const Checkout = () => {
                     <p>Delivery</p>
                   </div>
                   <div className="col-6 text-end" id="value">
-                    <p>$40.0</p>
-                    <p>$5.0</p>
+                    <p>{formatPrice(item?.price)}</p>
+                    <p>{formatPrice(5000)}</p>
                   </div>
                 </div>
                 <div className="row">
@@ -135,15 +149,16 @@ const Checkout = () => {
                     <p>Shopping Summary</p>
                   </div>
                   <div className="col-6 text-end" id="value">
-                    <p>$40.0</p>
+                  <p>{formatPrice(calculateTotalPrice())}</p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-12 d-grid">
-                    <ModalPayment modalName="Select Payment" />
+                    <ModalPayment modalName="Select Payment" price={item} calculateTotalPrice={calculateTotalPrice} />
                   </div>
                 </div>
               </div>
+              ))}
             </div>
           </div>
         </div>

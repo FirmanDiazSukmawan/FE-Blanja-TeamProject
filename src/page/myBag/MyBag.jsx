@@ -79,6 +79,19 @@ const MyBag = () => {
       console.log(err);
     }
   };
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    data.forEach((item) => {
+      
+      totalPrice += item.price;
+    });
+
+    
+    totalPrice += 5000;
+
+    return totalPrice;
+  };
   
   // console.log(data)
 
@@ -183,8 +196,8 @@ const MyBag = () => {
                     <p>Delivery</p>
                   </div>
                   <div className="col-6 text-end" id="value">
-                    <p>$40.0</p>
-                    <p>$5.0</p>
+                  <p>{formatPrice(item?.price)}</p>
+                    <p>{formatPrice(5000)}</p>
                   </div>
                 </div>
                 <div className="row">
@@ -192,7 +205,7 @@ const MyBag = () => {
                     <p>Shopping Summary</p>
                   </div>
                   <div className="col-6 text-end" id="value">
-                    <p>$40.0</p>
+                  <p>{formatPrice(calculateTotalPrice())}</p>
                   </div>
                 </div>
                 <div className="row">

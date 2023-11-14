@@ -13,6 +13,9 @@ import axios from "axios";
 
 function ModalPayment(props) {
   const {order_id}= props
+  const {price} = props
+  const {calculateTotalPrice} = props
+  console.log(price)
 
   console.log(order_id)
   const [show, setShow] = useState(false);
@@ -152,8 +155,8 @@ function ModalPayment(props) {
                     <p>Delivery</p>
                   </div>
                   <div className="col-6 text-end" id="value">
-                    <p>$40.0</p>
-                    <p>$5.0</p>
+                  <p>{formatPrice(price?.price)}</p>
+                    <p>{formatPrice(5000)}</p>
                   </div>
                 </div>
               </div>
@@ -164,7 +167,7 @@ function ModalPayment(props) {
           <div className="row mx-3">
             <div className="col-6">
               <h4 className={style.summary}>Shopping Summary</h4>
-              <h4 className={style.price}>$ 45.0</h4>
+              <h4 className={style.price}>{formatPrice(calculateTotalPrice())}</h4>
             </div>
        
           <div className="col-4 offset-2 mb-5">
