@@ -212,7 +212,7 @@ To use this project, follow these steps:
 
 ## Authors
 
-- [Firman Diaz Sukmawan](https://github.com/xTats) - Project Leader & Fullstack Developer
+- [Firman Diaz Sukmawan](https://github.com/FirmanDiazSukmawan) - Project Leader & Fullstack Developer
 - [Ramdlan Faqih](https://github.com/RamdlanFaqih) - Fullstack Developer
 - [Fajar Adi Prasetio](https://github.com/FajarAdi25) - Frontend Developer
 - [Muhammad Jajuni](https://github.com/MuhamadJajuni) - Frontend Developer
@@ -221,7 +221,7 @@ To use this project, follow these steps:
 
 RESTful API for this web application, clone this for development Blanja.
 
-[BE-Blanja-Team-Project](https://github.com/xTats/BE-Blanja-Team-Project)
+[BE-Blanja-Team-Project](https://github.com/FirmanDiazSukmawan/BE-Blanja-Team-Project)
 
 ## Contributing
 
